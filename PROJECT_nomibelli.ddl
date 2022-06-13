@@ -12,7 +12,6 @@
 -- Database Section
 -- ________________ 
 
-create database SkateSchool;
 use SkateSchool;
 
 
@@ -24,27 +23,27 @@ use SkateSchool;
 -- _____________ 
 
 create table Attrezzatura (
-     CodiceAttrezzo int not null,
+     CodiceAttrezzo int not null identity,
      CodiceSede int not null,
      Descrizione varchar(200) not null,
      constraint ID_ATTREZZATURA_ID primary key (CodiceAttrezzo));
 
 create table CentroEstivo (
-     CodiceCentroEstivo int not null,
+     CodiceCentroEstivo int not null identity,
      DataInizio date not null,
      DataFine date not null,
      Descrizione varchar(200) not null,
      constraint ID_CENTROESTIVO_ID primary key (CodiceCentroEstivo));
 
 create table Corso (
-     CodiceCorso int not null,
+     CodiceCorso int not null identity,
      Descrizione varchar(200) not null,
      Livello varchar(20) not null,
      CodiceSede int not null,
      constraint ID_CORSO_ID primary key (CodiceCorso));
 
 create table Gara (
-     CodiceGara int not null,
+     CodiceGara int not null identity,
      Data date not null,
      Città varchar(30) not null,
      Categoria varchar(30) not null,
@@ -57,7 +56,7 @@ create table Insegnamento (
      constraint ID_insegnamento_ID primary key (CodiceSede, CodiceIstruttore));
 
 create table Iscritto (
-     CodiceIscritto int not null,
+     CodiceIscritto int not null identity,
      Nome varchar(30) not null,
      Cognome varchar(30) not null,
      Eta int not null,
@@ -81,7 +80,7 @@ create table IscrizioneGara (
      constraint ID_iscrizione_ID primary key (CodiceIscritto, CodiceGara));
 
 create table Istruttore (
-     CodiceIstruttore int not null,
+     CodiceIstruttore int not null identity,
      Nome varchar(30) not null,
      Cognome varchar(30) not null,
      Eta int not null,
@@ -89,7 +88,7 @@ create table Istruttore (
      constraint FKPER_IST_ID primary key (CodiceIstruttore));
 
 create table Lezione (
-     CodiceLezione int not null,
+     CodiceLezione int not null identity,
      CodiceIstruttore int not null,
      CodiceCorso int not null,
      MassimoPartecipanti int not null,
@@ -105,7 +104,7 @@ create table LezionePrivata (
      constraint ID_LEZIONE_PRIVATA_ID primary key (CodiceIstruttore, Data));
 
 create table Oggetto (
-     CodiceOggetto int not null,
+     CodiceOggetto int not null identity,
      Quantita int not null,
      Prezzo real not null,
      Descrizione varchar(200) not null,
@@ -114,7 +113,7 @@ create table Oggetto (
      constraint IDOGGETTO primary key (CodiceOggetto));
 
 create table Pagamento (
-     CodicePagamento int not null,
+     CodicePagamento int not null identity,
      NumeroLezioniRimaste int not null,
      Data date not null,
      CodiceIscritto int not null,
@@ -129,19 +128,19 @@ create table Prestito (
      constraint ID_PRESTITO_ID primary key (CodiceAttrezzo, CodiceIscritto, Data));
 
 create table Sede (
-     CodiceSede int not null,
+     CodiceSede int not null identity,
      Citta varchar(30) not null,
      SkatePark varchar(30) not null,
      constraint ID_SEDE_ID primary key (CodiceSede));
 
 create table Tariffario (
-     CodiceTariffario int not null,
+     CodiceTariffario int not null identity,
      NumeroLezioni int not null,
      Prezzo real not null,
      constraint ID_TARIFFARIO_ID primary key (CodiceTariffario));
 
 create table TipologiaOggetto (
-     CodiceTipo int not null,
+     CodiceTipo int not null identity,
      Nome varchar(30) not null,
      constraint ID_TIPOLOGIA_OGGETTO_ID primary key (CodiceTipo));
 
@@ -151,7 +150,7 @@ create table TutoraggioCentroEstivo (
      constraint ID_tutoraggio_ID primary key (CodiceCentroEstivo, CodiceIstruttore));
 
 create table Vendita (
-     CodiceVendita int not null,
+     CodiceVendita int not null identity,
      CodiceOggetto int not null,
      Quantita int not null,
      Data date not null,
