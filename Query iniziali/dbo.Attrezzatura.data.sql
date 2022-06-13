@@ -1,0 +1,7 @@
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (1, 1, N'Skateboard giallo')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (2, 1, N'Casco nero')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (3, 1, N'Skateboard nero')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (4, 2, N'Casco rosso')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (5, 2, N'Skateboard nero')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (6, 4, N'Casco giallo')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (7, 3, N'Casco blu')

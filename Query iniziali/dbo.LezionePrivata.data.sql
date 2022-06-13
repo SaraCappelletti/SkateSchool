@@ -1,0 +1,5 @@
+INSERT INTO [dbo].[LezionePrivata] ([CodiceIstruttore], [Data], [CodiceSede], [CodiceIscritto]) VALUES (1, N'2022-06-14', 1, 1)
+INSERT INTO [dbo].[LezionePrivata] ([CodiceIstruttore], [Data], [CodiceSede], [CodiceIscritto]) VALUES (1, N'2022-06-15', 2, 5)
+INSERT INTO [dbo].[LezionePrivata] ([CodiceIstruttore], [Data], [CodiceSede], [CodiceIscritto]) VALUES (4, N'2022-06-13', 3, 4)
+INSERT INTO [dbo].[LezionePrivata] ([CodiceIstruttore], [Data], [CodiceSede], [CodiceIscritto]) VALUES (3, N'2022-06-15', 1, 1)
+INSERT INTO [dbo].[LezionePrivata] ([CodiceIstruttore], [Data], [CodiceSede], [CodiceIscritto]) VALUES (2, N'2022-06-14', 2, 4)
