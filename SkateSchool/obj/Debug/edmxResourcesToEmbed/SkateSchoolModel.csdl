@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SkateSchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SkateSchoolEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Attrezzatura" EntityType="SkateSchoolModel.Attrezzatura" />
+    <EntitySet Name="CentroEstivo" EntityType="SkateSchoolModel.CentroEstivo" />
+    <EntitySet Name="Corso" EntityType="SkateSchoolModel.Corso" />
+    <EntitySet Name="Gara" EntityType="SkateSchoolModel.Gara" />
+    <EntitySet Name="Iscritto" EntityType="SkateSchoolModel.Iscritto" />
+    <EntitySet Name="Istruttore" EntityType="SkateSchoolModel.Istruttore" />
+    <EntitySet Name="Lezione" EntityType="SkateSchoolModel.Lezione" />
+    <EntitySet Name="LezionePrivata" EntityType="SkateSchoolModel.LezionePrivata" />
+    <EntitySet Name="Oggetto" EntityType="SkateSchoolModel.Oggetto" />
+    <EntitySet Name="Pagamento" EntityType="SkateSchoolModel.Pagamento" />
+    <EntitySet Name="Prestito" EntityType="SkateSchoolModel.Prestito" />
+    <EntitySet Name="Sede" EntityType="SkateSchoolModel.Sede" />
+    <EntitySet Name="Tariffario" EntityType="SkateSchoolModel.Tariffario" />
+    <EntitySet Name="TipologiaOggetto" EntityType="SkateSchoolModel.TipologiaOggetto" />
+    <EntitySet Name="Vendita" EntityType="SkateSchoolModel.Vendita" />
+    <AssociationSet Name="FKpossiede_FK" Association="SkateSchoolModel.FKpossiede_FK">
+      <End Role="Sede" EntitySet="Sede" />
+      <End Role="Attrezzatura" EntitySet="Attrezzatura" />
+    </AssociationSet>
+    <AssociationSet Name="FKprestito" Association="SkateSchoolModel.FKprestito">
+      <End Role="Attrezzatura" EntitySet="Attrezzatura" />
+      <End Role="Prestito" EntitySet="Prestito" />
+    </AssociationSet>
+    <AssociationSet Name="FKappartiene_FK" Association="SkateSchoolModel.FKappartiene_FK">
+      <End Role="Corso" EntitySet="Corso" />
+      <End Role="Lezione" EntitySet="Lezione" />
+    </AssociationSet>
+    <AssociationSet Name="FKospita_FK" Association="SkateSchoolModel.FKospita_FK">
+      <End Role="Sede" EntitySet="Sede" />
+      <End Role="Corso" EntitySet="Corso" />
+    </AssociationSet>
+    <AssociationSet Name="FKeffettuato_FK" Association="SkateSchoolModel.FKeffettuato_FK">
+      <End Role="Iscritto" EntitySet="Iscritto" />
+      <End Role="Pagamento" EntitySet="Pagamento" />
+    </AssociationSet>
+    <AssociationSet Name="FKprende_FK" Association="SkateSchoolModel.FKprende_FK">
+      <End Role="Iscritto" EntitySet="Iscritto" />
+      <End Role="Prestito" EntitySet="Prestito" />
+    </AssociationSet>
+    <AssociationSet Name="FKsostiene_FK" Association="SkateSchoolModel.FKsostiene_FK">
+      <End Role="Iscritto" EntitySet="Iscritto" />
+      <End Role="LezionePrivata" EntitySet="LezionePrivata" />
+    </AssociationSet>
+    <AssociationSet Name="FKgestione" Association="SkateSchoolModel.FKgestione">
+      <End Role="Istruttore" EntitySet="Istruttore" />
+      <End Role="Lezione" EntitySet="Lezione" />
+    </AssociationSet>
+    <AssociationSet Name="FKpresiede" Association="SkateSchoolModel.FKpresiede">
+      <End Role="Istruttore" EntitySet="Istruttore" />
+      <End Role="LezionePrivata" EntitySet="LezionePrivata" />
+    </AssociationSet>
+    <AssociationSet Name="FKluogo_FK" Association="SkateSchoolModel.FKluogo_FK">
+      <End Role="Sede" EntitySet="Sede" />
+      <End Role="LezionePrivata" EntitySet="LezionePrivata" />
+    </AssociationSet>
+    <AssociationSet Name="FKappartenenza_FK" Association="SkateSchoolModel.FKappartenenza_FK">
+      <End Role="TipologiaOggetto" EntitySet="TipologiaOggetto" />
+      <End Role="Oggetto" EntitySet="Oggetto" />
+    </AssociationSet>
+    <AssociationSet Name="FKR" Association="SkateSchoolModel.FKR">
+      <End Role="Oggetto" EntitySet="Oggetto" />
+      <End Role="Vendita" EntitySet="Vendita" />
+    </AssociationSet>
+    <AssociationSet Name="FKvendita_FK" Association="SkateSchoolModel.FKvendita_FK">
+      <End Role="Sede" EntitySet="Sede" />
+      <End Role="Oggetto" EntitySet="Oggetto" />
+    </AssociationSet>
+    <AssociationSet Name="FKcomprende_FK" Association="SkateSchoolModel.FKcomprende_FK">
+      <End Role="Tariffario" EntitySet="Tariffario" />
+      <End Role="Pagamento" EntitySet="Pagamento" />
+    </AssociationSet>
+    <AssociationSet Name="Insegnamento" Association="SkateSchoolModel.Insegnamento">
+      <End Role="Istruttore" EntitySet="Istruttore" />
+      <End Role="Sede" EntitySet="Sede" />
+    </AssociationSet>
+    <AssociationSet Name="Iscrizione" Association="SkateSchoolModel.Iscrizione">
+      <End Role="Iscritto" EntitySet="Iscritto" />
+      <End Role="Lezione" EntitySet="Lezione" />
+    </AssociationSet>
+    <AssociationSet Name="IscrizioneCentroEstivo" Association="SkateSchoolModel.IscrizioneCentroEstivo">
+      <End Role="CentroEstivo" EntitySet="CentroEstivo" />
+      <End Role="Iscritto" EntitySet="Iscritto" />
+    </AssociationSet>
+    <AssociationSet Name="IscrizioneGara" Association="SkateSchoolModel.IscrizioneGara">
+      <End Role="Gara" EntitySet="Gara" />
+      <End Role="Iscritto" EntitySet="Iscritto" />
+    </AssociationSet>
+    <AssociationSet Name="TutoraggioCentroEstivo" Association="SkateSchoolModel.TutoraggioCentroEstivo">
+      <End Role="CentroEstivo" EntitySet="CentroEstivo" />
+      <End Role="Istruttore" EntitySet="Istruttore" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Attrezzatura">
+    <Key>
+      <PropertyRef Name="CodiceAttrezzo" />
+    </Key>
+    <Property Name="CodiceAttrezzo" Type="Int32" Nullable="false" />
+    <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+    <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKpossiede_FK" FromRole="Attrezzatura" ToRole="Sede" />
+    <NavigationProperty Name="Prestito" Relationship="SkateSchoolModel.FKprestito" FromRole="Attrezzatura" ToRole="Prestito" />
+  </EntityType>
+  <EntityType Name="CentroEstivo">
+    <Key>
+      <PropertyRef Name="CodiceCentroEstivo" />
+    </Key>
+    <Property Name="CodiceCentroEstivo" Type="Int32" Nullable="false" />
+    <Property Name="DataInizio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DataFine" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.IscrizioneCentroEstivo" FromRole="CentroEstivo" ToRole="Iscritto" />
+    <NavigationProperty Name="Istruttore" Relationship="SkateSchoolModel.TutoraggioCentroEstivo" FromRole="CentroEstivo" ToRole="Istruttore" />
+  </EntityType>
+  <EntityType Name="Corso">
+    <Key>
+      <PropertyRef Name="CodiceCorso" />
+    </Key>
+    <Property Name="CodiceCorso" Type="Int32" Nullable="false" />
+    <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Livello" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Lezione" Relationship="SkateSchoolModel.FKappartiene_FK" FromRole="Corso" ToRole="Lezione" />
+    <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKospita_FK" FromRole="Corso" ToRole="Sede" />
+  </EntityType>
+  <EntityType Name="Gara">
+    <Key>
+      <PropertyRef Name="CodiceGara" />
+    </Key>
+    <Property Name="CodiceGara" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Città" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.IscrizioneGara" FromRole="Gara" ToRole="Iscritto" />
+  </EntityType>
+  <EntityType Name="Iscritto">
+    <Key>
+      <PropertyRef Name="CodiceIscritto" />
+    </Key>
+    <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Cognome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Eta" Type="Int32" Nullable="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Livello" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Pagamento" Relationship="SkateSchoolModel.FKeffettuato_FK" FromRole="Iscritto" ToRole="Pagamento" />
+    <NavigationProperty Name="Prestito" Relationship="SkateSchoolModel.FKprende_FK" FromRole="Iscritto" ToRole="Prestito" />
+    <NavigationProperty Name="LezionePrivata" Relationship="SkateSchoolModel.FKsostiene_FK" FromRole="Iscritto" ToRole="LezionePrivata" />
+    <NavigationProperty Name="Lezione" Relationship="SkateSchoolModel.Iscrizione" FromRole="Iscritto" ToRole="Lezione" />
+    <NavigationProperty Name="CentroEstivo" Relationship="SkateSchoolModel.IscrizioneCentroEstivo" FromRole="Iscritto" ToRole="CentroEstivo" />
+    <NavigationProperty Name="Gara" Relationship="SkateSchoolModel.IscrizioneGara" FromRole="Iscritto" ToRole="Gara" />
+  </EntityType>
+  <EntityType Name="Istruttore">
+    <Key>
+      <PropertyRef Name="CodiceIstruttore" />
+    </Key>
+    <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Cognome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Eta" Type="Int32" Nullable="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Lezione" Relationship="SkateSchoolModel.FKgestione" FromRole="Istruttore" ToRole="Lezione" />
+    <NavigationProperty Name="LezionePrivata" Relationship="SkateSchoolModel.FKpresiede" FromRole="Istruttore" ToRole="LezionePrivata" />
+    <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.Insegnamento" FromRole="Istruttore" ToRole="Sede" />
+    <NavigationProperty Name="CentroEstivo" Relationship="SkateSchoolModel.TutoraggioCentroEstivo" FromRole="Istruttore" ToRole="CentroEstivo" />
+  </EntityType>
+  <EntityType Name="Lezione">
+    <Key>
+      <PropertyRef Name="CodiceLezione" />
+    </Key>
+    <Property Name="CodiceLezione" Type="Int32" Nullable="false" />
+    <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" />
+    <Property Name="CodiceCorso" Type="Int32" Nullable="false" />
+    <Property Name="MassimoPartecipanti" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Corso" Relationship="SkateSchoolModel.FKappartiene_FK" FromRole="Lezione" ToRole="Corso" />
+    <NavigationProperty Name="Istruttore" Relationship="SkateSchoolModel.FKgestione" FromRole="Lezione" ToRole="Istruttore" />
+    <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.Iscrizione" FromRole="Lezione" ToRole="Iscritto" />
+  </EntityType>
+  <EntityType Name="LezionePrivata">
+    <Key>
+      <PropertyRef Name="CodiceIstruttore" />
+      <PropertyRef Name="Data" />
+    </Key>
+    <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+    <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.FKsostiene_FK" FromRole="LezionePrivata" ToRole="Iscritto" />
+    <NavigationProperty Name="Istruttore" Relationship="SkateSchoolModel.FKpresiede" FromRole="LezionePrivata" ToRole="Istruttore" />
+    <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKluogo_FK" FromRole="LezionePrivata" ToRole="Sede" />
+  </EntityType>
+  <EntityType Name="Oggetto">
+    <Key>
+      <PropertyRef Name="CodiceOggetto" />
+    </Key>
+    <Property Name="CodiceOggetto" Type="Int32" Nullable="false" />
+    <Property Name="Quantita" Type="Int32" Nullable="false" />
+    <Property Name="Prezzo" Type="Single" Nullable="false" />
+    <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+    <Property Name="CodiceTipo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TipologiaOggetto" Relationship="SkateSchoolModel.FKappartenenza_FK" FromRole="Oggetto" ToRole="TipologiaOggetto" />
+    <NavigationProperty Name="Vendita" Relationship="SkateSchoolModel.FKR" FromRole="Oggetto" ToRole="Vendita" />
+    <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKvendita_FK" FromRole="Oggetto" ToRole="Sede" />
+  </EntityType>
+  <EntityType Name="Pagamento">
+    <Key>
+      <PropertyRef Name="CodicePagamento" />
+    </Key>
+    <Property Name="CodicePagamento" Type="Int32" Nullable="false" />
+    <Property Name="NumeroLezioniRimaste" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
+    <Property Name="CodiceTariffario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.FKeffettuato_FK" FromRole="Pagamento" ToRole="Iscritto" />
+    <NavigationProperty Name="Tariffario" Relationship="SkateSchoolModel.FKcomprende_FK" FromRole="Pagamento" ToRole="Tariffario" />
+  </EntityType>
+  <EntityType Name="Prestito">
+    <Key>
+      <PropertyRef Name="CodiceIscritto" />
+      <PropertyRef Name="CodiceAttrezzo" />
+      <PropertyRef Name="Data" />
+    </Key>
+    <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
+    <Property Name="CodiceAttrezzo" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Restituito" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Attrezzatura" Relationship="SkateSchoolModel.FKprestito" FromRole="Prestito" ToRole="Attrezzatura" />
+    <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.FKprende_FK" FromRole="Prestito" ToRole="Iscritto" />
+  </EntityType>
+  <EntityType Name="Sede">
+    <Key>
+      <PropertyRef Name="CodiceSede" />
+    </Key>
+    <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+    <Property Name="Citta" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="SkatePark" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Attrezzatura" Relationship="SkateSchoolModel.FKpossiede_FK" FromRole="Sede" ToRole="Attrezzatura" />
+    <NavigationProperty Name="Corso" Relationship="SkateSchoolModel.FKospita_FK" FromRole="Sede" ToRole="Corso" />
+    <NavigationProperty Name="LezionePrivata" Relationship="SkateSchoolModel.FKluogo_FK" FromRole="Sede" ToRole="LezionePrivata" />
+    <NavigationProperty Name="Oggetto" Relationship="SkateSchoolModel.FKvendita_FK" FromRole="Sede" ToRole="Oggetto" />
+    <NavigationProperty Name="Istruttore" Relationship="SkateSchoolModel.Insegnamento" FromRole="Sede" ToRole="Istruttore" />
+  </EntityType>
+  <EntityType Name="Tariffario">
+    <Key>
+      <PropertyRef Name="CodiceTariffario" />
+    </Key>
+    <Property Name="CodiceTariffario" Type="Int32" Nullable="false" />
+    <Property Name="NumeroLezioni" Type="Int32" Nullable="false" />
+    <Property Name="Prezzo" Type="Single" Nullable="false" />
+    <NavigationProperty Name="Pagamento" Relationship="SkateSchoolModel.FKcomprende_FK" FromRole="Tariffario" ToRole="Pagamento" />
+  </EntityType>
+  <EntityType Name="TipologiaOggetto">
+    <Key>
+      <PropertyRef Name="CodiceTipo" />
+    </Key>
+    <Property Name="CodiceTipo" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Oggetto" Relationship="SkateSchoolModel.FKappartenenza_FK" FromRole="TipologiaOggetto" ToRole="Oggetto" />
+  </EntityType>
+  <EntityType Name="Vendita">
+    <Key>
+      <PropertyRef Name="CodiceVendita" />
+    </Key>
+    <Property Name="CodiceVendita" Type="Int32" Nullable="false" />
+    <Property Name="CodiceOggetto" Type="Int32" Nullable="false" />
+    <Property Name="Quantita" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Oggetto" Relationship="SkateSchoolModel.FKR" FromRole="Vendita" ToRole="Oggetto" />
+  </EntityType>
+  <Association Name="FKpossiede_FK">
+    <End Type="SkateSchoolModel.Sede" Role="Sede" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Attrezzatura" Role="Attrezzatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sede">
+        <PropertyRef Name="CodiceSede" />
+      </Principal>
+      <Dependent Role="Attrezzatura">
+        <PropertyRef Name="CodiceSede" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKprestito">
+    <End Type="SkateSchoolModel.Attrezzatura" Role="Attrezzatura" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Prestito" Role="Prestito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attrezzatura">
+        <PropertyRef Name="CodiceAttrezzo" />
+      </Principal>
+      <Dependent Role="Prestito">
+        <PropertyRef Name="CodiceAttrezzo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKappartiene_FK">
+    <End Type="SkateSchoolModel.Corso" Role="Corso" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Lezione" Role="Lezione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Corso">
+        <PropertyRef Name="CodiceCorso" />
+      </Principal>
+      <Dependent Role="Lezione">
+        <PropertyRef Name="CodiceCorso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKospita_FK">
+    <End Type="SkateSchoolModel.Sede" Role="Sede" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Corso" Role="Corso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sede">
+        <PropertyRef Name="CodiceSede" />
+      </Principal>
+      <Dependent Role="Corso">
+        <PropertyRef Name="CodiceSede" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKeffettuato_FK">
+    <End Type="SkateSchoolModel.Iscritto" Role="Iscritto" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Pagamento" Role="Pagamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Iscritto">
+        <PropertyRef Name="CodiceIscritto" />
+      </Principal>
+      <Dependent Role="Pagamento">
+        <PropertyRef Name="CodiceIscritto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKprende_FK">
+    <End Type="SkateSchoolModel.Iscritto" Role="Iscritto" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Prestito" Role="Prestito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Iscritto">
+        <PropertyRef Name="CodiceIscritto" />
+      </Principal>
+      <Dependent Role="Prestito">
+        <PropertyRef Name="CodiceIscritto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKsostiene_FK">
+    <End Type="SkateSchoolModel.Iscritto" Role="Iscritto" Multiplicity="1" />
+    <End Type="SkateSchoolModel.LezionePrivata" Role="LezionePrivata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Iscritto">
+        <PropertyRef Name="CodiceIscritto" />
+      </Principal>
+      <Dependent Role="LezionePrivata">
+        <PropertyRef Name="CodiceIscritto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKgestione">
+    <End Type="SkateSchoolModel.Istruttore" Role="Istruttore" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Lezione" Role="Lezione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Istruttore">
+        <PropertyRef Name="CodiceIstruttore" />
+      </Principal>
+      <Dependent Role="Lezione">
+        <PropertyRef Name="CodiceIstruttore" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKpresiede">
+    <End Type="SkateSchoolModel.Istruttore" Role="Istruttore" Multiplicity="1" />
+    <End Type="SkateSchoolModel.LezionePrivata" Role="LezionePrivata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Istruttore">
+        <PropertyRef Name="CodiceIstruttore" />
+      </Principal>
+      <Dependent Role="LezionePrivata">
+        <PropertyRef Name="CodiceIstruttore" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKluogo_FK">
+    <End Type="SkateSchoolModel.Sede" Role="Sede" Multiplicity="1" />
+    <End Type="SkateSchoolModel.LezionePrivata" Role="LezionePrivata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sede">
+        <PropertyRef Name="CodiceSede" />
+      </Principal>
+      <Dependent Role="LezionePrivata">
+        <PropertyRef Name="CodiceSede" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKappartenenza_FK">
+    <End Type="SkateSchoolModel.TipologiaOggetto" Role="TipologiaOggetto" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Oggetto" Role="Oggetto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipologiaOggetto">
+        <PropertyRef Name="CodiceTipo" />
+      </Principal>
+      <Dependent Role="Oggetto">
+        <PropertyRef Name="CodiceTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKR">
+    <End Type="SkateSchoolModel.Oggetto" Role="Oggetto" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Vendita" Role="Vendita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oggetto">
+        <PropertyRef Name="CodiceOggetto" />
+      </Principal>
+      <Dependent Role="Vendita">
+        <PropertyRef Name="CodiceOggetto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKvendita_FK">
+    <End Type="SkateSchoolModel.Sede" Role="Sede" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Oggetto" Role="Oggetto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sede">
+        <PropertyRef Name="CodiceSede" />
+      </Principal>
+      <Dependent Role="Oggetto">
+        <PropertyRef Name="CodiceSede" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKcomprende_FK">
+    <End Type="SkateSchoolModel.Tariffario" Role="Tariffario" Multiplicity="1" />
+    <End Type="SkateSchoolModel.Pagamento" Role="Pagamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tariffario">
+        <PropertyRef Name="CodiceTariffario" />
+      </Principal>
+      <Dependent Role="Pagamento">
+        <PropertyRef Name="CodiceTariffario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Insegnamento">
+    <End Type="SkateSchoolModel.Istruttore" Role="Istruttore" Multiplicity="*" />
+    <End Type="SkateSchoolModel.Sede" Role="Sede" Multiplicity="*" />
+  </Association>
+  <Association Name="Iscrizione">
+    <End Type="SkateSchoolModel.Iscritto" Role="Iscritto" Multiplicity="*" />
+    <End Type="SkateSchoolModel.Lezione" Role="Lezione" Multiplicity="*" />
+  </Association>
+  <Association Name="IscrizioneCentroEstivo">
+    <End Type="SkateSchoolModel.CentroEstivo" Role="CentroEstivo" Multiplicity="*" />
+    <End Type="SkateSchoolModel.Iscritto" Role="Iscritto" Multiplicity="*" />
+  </Association>
+  <Association Name="IscrizioneGara">
+    <End Type="SkateSchoolModel.Gara" Role="Gara" Multiplicity="*" />
+    <End Type="SkateSchoolModel.Iscritto" Role="Iscritto" Multiplicity="*" />
+  </Association>
+  <Association Name="TutoraggioCentroEstivo">
+    <End Type="SkateSchoolModel.CentroEstivo" Role="CentroEstivo" Multiplicity="*" />
+    <End Type="SkateSchoolModel.Istruttore" Role="Istruttore" Multiplicity="*" />
+  </Association>
+</Schema>

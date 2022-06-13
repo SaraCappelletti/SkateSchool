@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="52ddc01fb7da45e990f609f21693bc45" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="SkateSchoolModel.Attrezzatura" Width="1.5" PointX="7.5" PointY="13.875" />
+        <EntityTypeShape EntityType="SkateSchoolModel.CentroEstivo" Width="1.5" PointX="0.75" PointY="11.25" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Corso" Width="1.5" PointX="7.5" PointY="20.125" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Gara" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Iscritto" Width="1.5" PointX="3" PointY="10.625" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Istruttore" Width="1.5" PointX="3" PointY="15" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Lezione" Width="1.5" PointX="12.75" PointY="18.25" />
+        <EntityTypeShape EntityType="SkateSchoolModel.LezionePrivata" Width="1.5" PointX="7.5" PointY="10" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Oggetto" Width="1.5" PointX="10.5" PointY="15" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Pagamento" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Prestito" Width="1.5" PointX="9.75" PointY="11.125" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Sede" Width="1.5" PointX="5.25" PointY="15.125" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Tariffario" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="SkateSchoolModel.TipologiaOggetto" Width="1.5" PointX="8.25" PointY="17.625" />
+        <EntityTypeShape EntityType="SkateSchoolModel.Vendita" Width="1.5" PointX="12.75" PointY="15.375" />
+        <AssociationConnector Association="SkateSchoolModel.FKpossiede_FK" />
+        <AssociationConnector Association="SkateSchoolModel.FKprestito" />
+        <AssociationConnector Association="SkateSchoolModel.FKappartiene_FK" />
+        <AssociationConnector Association="SkateSchoolModel.FKospita_FK" />
+        <AssociationConnector Association="SkateSchoolModel.FKeffettuato_FK" />
+        <AssociationConnector Association="SkateSchoolModel.FKprende_FK" />
+        <AssociationConnector Association="SkateSchoolModel.FKsostiene_FK" />
+        <AssociationConnector Association="SkateSchoolModel.FKgestione" />
+        <AssociationConnector Association="SkateSchoolModel.FKpresiede" />
+        <AssociationConnector Association="SkateSchoolModel.FKluogo_FK" />
+        <AssociationConnector Association="SkateSchoolModel.FKappartenenza_FK" />
+        <AssociationConnector Association="SkateSchoolModel.FKR" />
+        <AssociationConnector Association="SkateSchoolModel.FKvendita_FK" />
+        <AssociationConnector Association="SkateSchoolModel.FKcomprende_FK" />
+        <AssociationConnector Association="SkateSchoolModel.Insegnamento" />
+        <AssociationConnector Association="SkateSchoolModel.Iscrizione" />
+        <AssociationConnector Association="SkateSchoolModel.IscrizioneCentroEstivo" />
+        <AssociationConnector Association="SkateSchoolModel.IscrizioneGara" />
+        <AssociationConnector Association="SkateSchoolModel.TutoraggioCentroEstivo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
