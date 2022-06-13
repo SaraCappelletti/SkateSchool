@@ -18,7 +18,7 @@ namespace SkateSchool
         public Sede()
         {
             this.Attrezzatura = new HashSet<Attrezzatura>();
-            this.Corso = new HashSet<Corso>();
+            this.Corsi = new HashSet<Corso>();
             this.LezionePrivata = new HashSet<LezionePrivata>();
             this.Oggetto = new HashSet<Oggetto>();
             this.Istruttore = new HashSet<Istruttore>();
@@ -31,7 +31,7 @@ namespace SkateSchool
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attrezzatura> Attrezzatura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Corso> Corso { get; set; }
+        public virtual ICollection<Corso> Corsi { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LezionePrivata> LezionePrivata { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

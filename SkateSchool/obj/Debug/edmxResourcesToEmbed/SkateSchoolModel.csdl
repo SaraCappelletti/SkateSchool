@@ -122,7 +122,7 @@
     <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Livello" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="CodiceSede" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Lezione" Relationship="SkateSchoolModel.FKappartiene_FK" FromRole="Corso" ToRole="Lezione" />
+    <NavigationProperty Name="Lezioni" Relationship="SkateSchoolModel.FKappartiene_FK" FromRole="Corso" ToRole="Lezione" />
     <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKospita_FK" FromRole="Corso" ToRole="Sede" />
   </EntityType>
   <EntityType Name="Gara">
@@ -177,8 +177,8 @@
     <Property Name="MassimoPartecipanti" Type="Int32" Nullable="false" />
     <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Corso" Relationship="SkateSchoolModel.FKappartiene_FK" FromRole="Lezione" ToRole="Corso" />
-    <NavigationProperty Name="Istruttore" Relationship="SkateSchoolModel.FKgestione" FromRole="Lezione" ToRole="Istruttore" />
-    <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.Iscrizione" FromRole="Lezione" ToRole="Iscritto" />
+    <NavigationProperty Name="Istruttori" Relationship="SkateSchoolModel.FKgestione" FromRole="Lezione" ToRole="Istruttore" />
+    <NavigationProperty Name="Iscritti" Relationship="SkateSchoolModel.Iscrizione" FromRole="Lezione" ToRole="Iscritto" />
   </EntityType>
   <EntityType Name="LezionePrivata">
     <Key>
@@ -204,8 +204,8 @@
     <Property Name="CodiceSede" Type="Int32" Nullable="false" />
     <Property Name="CodiceTipo" Type="Int32" Nullable="false" />
     <NavigationProperty Name="TipologiaOggetto" Relationship="SkateSchoolModel.FKappartenenza_FK" FromRole="Oggetto" ToRole="TipologiaOggetto" />
-    <NavigationProperty Name="Vendita" Relationship="SkateSchoolModel.FKR" FromRole="Oggetto" ToRole="Vendita" />
-    <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKvendita_FK" FromRole="Oggetto" ToRole="Sede" />
+    <NavigationProperty Name="Vendite" Relationship="SkateSchoolModel.FKR" FromRole="Oggetto" ToRole="Vendita" />
+    <NavigationProperty Name="Sedi" Relationship="SkateSchoolModel.FKvendita_FK" FromRole="Oggetto" ToRole="Sede" />
   </EntityType>
   <EntityType Name="Pagamento">
     <Key>
@@ -240,7 +240,7 @@
     <Property Name="Citta" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="SkatePark" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Attrezzatura" Relationship="SkateSchoolModel.FKpossiede_FK" FromRole="Sede" ToRole="Attrezzatura" />
-    <NavigationProperty Name="Corso" Relationship="SkateSchoolModel.FKospita_FK" FromRole="Sede" ToRole="Corso" />
+    <NavigationProperty Name="Corsi" Relationship="SkateSchoolModel.FKospita_FK" FromRole="Sede" ToRole="Corso" />
     <NavigationProperty Name="LezionePrivata" Relationship="SkateSchoolModel.FKluogo_FK" FromRole="Sede" ToRole="LezionePrivata" />
     <NavigationProperty Name="Oggetto" Relationship="SkateSchoolModel.FKvendita_FK" FromRole="Sede" ToRole="Oggetto" />
     <NavigationProperty Name="Istruttore" Relationship="SkateSchoolModel.Insegnamento" FromRole="Sede" ToRole="Istruttore" />
@@ -260,7 +260,7 @@
     </Key>
     <Property Name="CodiceTipo" Type="Int32" Nullable="false" />
     <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Oggetto" Relationship="SkateSchoolModel.FKappartenenza_FK" FromRole="TipologiaOggetto" ToRole="Oggetto" />
+    <NavigationProperty Name="Oggetti" Relationship="SkateSchoolModel.FKappartenenza_FK" FromRole="TipologiaOggetto" ToRole="Oggetto" />
   </EntityType>
   <EntityType Name="Vendita">
     <Key>
@@ -270,7 +270,7 @@
     <Property Name="CodiceOggetto" Type="Int32" Nullable="false" />
     <Property Name="Quantita" Type="Int32" Nullable="false" />
     <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Oggetto" Relationship="SkateSchoolModel.FKR" FromRole="Vendita" ToRole="Oggetto" />
+    <NavigationProperty Name="Oggetti" Relationship="SkateSchoolModel.FKR" FromRole="Vendita" ToRole="Oggetto" />
   </EntityType>
   <Association Name="FKpossiede_FK">
     <End Type="SkateSchoolModel.Sede" Role="Sede" Multiplicity="1" />

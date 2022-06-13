@@ -20,3 +20,10 @@ C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\Sk
 C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\SkateSchool.csproj.CopyComplete
 C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\SkateSchool.exe
 C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\SkateSchool.pdb
+C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\Views\IscrizioneCorsiPage.g.cs
+C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\Views\IscrizioneCorsiPage.baml
+C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\SkateSchool.csproj.Fody.CopyLocal.cache
+C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\SkateSchool.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\Views\Negozio.g.cs
+C:\Users\sarac\Desktop\Programmazione\DataBase\Progetto\SkateSchool\obj\Debug\Views\Negozio.baml

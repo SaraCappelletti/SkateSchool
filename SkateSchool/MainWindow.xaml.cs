@@ -24,17 +24,6 @@ namespace SkateSchool
         public MainWindow()
         {
             InitializeComponent();
-            var vm = new TestViewModel();
-            DataContext = vm;
-            var db = new SkateSchoolEntities();
-            vm.Iscritti = db.Iscritto.ToArray();
         }
-    }
-
-    class TestViewModel : INotifyPropertyChanged
-    {
-        public Iscritto[] Iscritti { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
