@@ -364,4 +364,3 @@ create index FKtut_IST_IND
 
 create unique index ID_VENDITA_IND
      on Vendita (CodiceVendita);
-

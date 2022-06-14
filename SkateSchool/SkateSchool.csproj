@@ -96,6 +96,7 @@
       <DependentUpon>SkateSchoolModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Corso.cs" />
+    <Compile Include="Model\Iscritto.cs" />
     <Compile Include="Oggetto.cs">
       <DependentUpon>SkateSchoolModel.tt</DependentUpon>
     </Compile>
@@ -141,6 +142,9 @@
     <Compile Include="Views\Negozio.xaml.cs">
       <DependentUpon>Negozio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Prestiti.xaml.cs">
+      <DependentUpon>Prestiti.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -158,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Negozio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Prestiti.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

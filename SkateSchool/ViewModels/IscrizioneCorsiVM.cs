@@ -11,10 +11,14 @@ namespace SkateSchool.ViewModels
     {
         SkateSchoolEntities db = new SkateSchoolEntities();
 
-        /*public void SonoIscritto()
-        {
-            public bool IsIscritto { get; set; }
-        }*/
+        public bool IsIscritto { get; set; }
+        public bool IsNotIscritto => !IsIscritto;
+
+        public Iscritto[] Iscritti => db.Iscritto.ToArray();
+        public string NomeIscritto { get; set; }
+        public string CognomeIscritto { get; set; }
+        public int EtaIscritto { get; set; }
+        public string TelefonoIscritto { get; set; }
 
         public Sede[] Sedi => db.Sede.ToArray();
         public Sede SedeSelected { get; set; }
@@ -26,10 +30,26 @@ namespace SkateSchool.ViewModels
         public Lezione LezioneSelected { get; set; }
 
         public bool IsSedeSelected => SedeSelected != null;
+        public bool IsCorsoSelected => CorsoSelected != null;
 
         public void FaQualcosa()
         {
             Debug.Print("Sto facendo qualcosa!");
         }
+
+        public void AddIscritto()
+        {
+            var iscritto = new Iscritto
+            {
+                Nome = NomeIscritto,
+                Cognome = CognomeIscritto,
+                Eta = EtaIscritto,
+                Telefono = TelefonoIscritto
+            };
+            db.Iscritto.Add(iscritto);
+            db.SaveChanges();
+            //OnPropertyChanged(nameof(Iscritti));
+        }
+
     }
 }
