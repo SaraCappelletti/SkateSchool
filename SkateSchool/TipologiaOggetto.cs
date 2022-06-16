@@ -17,13 +17,13 @@ namespace SkateSchool
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipologiaOggetto()
         {
-            this.Oggetti = new HashSet<Oggetto>();
+            this.Oggetto = new HashSet<Oggetto>();
         }
     
         public int CodiceTipo { get; set; }
         public string Nome { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Oggetto> Oggetti { get; set; }
+        public virtual ICollection<Oggetto> Oggetto { get; set; }
     }
 }

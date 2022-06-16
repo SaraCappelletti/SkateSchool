@@ -17,7 +17,7 @@ namespace SkateSchool
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Lezione()
         {
-            this.Iscritti = new HashSet<Iscritto>();
+            this.Iscritto = new HashSet<Iscritto>();
         }
     
         public int CodiceLezione { get; set; }
@@ -27,8 +27,8 @@ namespace SkateSchool
         public System.DateTime Data { get; set; }
     
         public virtual Corso Corso { get; set; }
-        public virtual Istruttore Istruttori { get; set; }
+        public virtual Istruttore Istruttore { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Iscritto> Iscritti { get; set; }
+        public virtual ICollection<Iscritto> Iscritto { get; set; }
     }
 }

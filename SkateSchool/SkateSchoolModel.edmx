@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="CodiceAttrezzo" />
           </Key>
-          <Property Name="CodiceAttrezzo" Type="int" Nullable="false" />
+          <Property Name="CodiceAttrezzo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodiceSede" Type="int" Nullable="false" />
           <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="CodiceCentroEstivo" />
           </Key>
-          <Property Name="CodiceCentroEstivo" Type="int" Nullable="false" />
+          <Property Name="CodiceCentroEstivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DataInizio" Type="date" Nullable="false" />
           <Property Name="DataFine" Type="date" Nullable="false" />
           <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
@@ -26,7 +26,7 @@
           <Key>
             <PropertyRef Name="CodiceCorso" />
           </Key>
-          <Property Name="CodiceCorso" Type="int" Nullable="false" />
+          <Property Name="CodiceCorso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Livello" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="CodiceSede" Type="int" Nullable="false" />
@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="CodiceGara" />
           </Key>
-          <Property Name="CodiceGara" Type="int" Nullable="false" />
+          <Property Name="CodiceGara" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Data" Type="date" Nullable="false" />
           <Property Name="Città" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Categoria" Type="varchar" MaxLength="30" Nullable="false" />
@@ -53,7 +53,7 @@
           <Key>
             <PropertyRef Name="CodiceIscritto" />
           </Key>
-          <Property Name="CodiceIscritto" Type="int" Nullable="false" />
+          <Property Name="CodiceIscritto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Cognome" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Eta" Type="int" Nullable="false" />
@@ -88,7 +88,7 @@
           <Key>
             <PropertyRef Name="CodiceIstruttore" />
           </Key>
-          <Property Name="CodiceIstruttore" Type="int" Nullable="false" />
+          <Property Name="CodiceIstruttore" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Cognome" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Eta" Type="int" Nullable="false" />
@@ -98,7 +98,7 @@
           <Key>
             <PropertyRef Name="CodiceLezione" />
           </Key>
-          <Property Name="CodiceLezione" Type="int" Nullable="false" />
+          <Property Name="CodiceLezione" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodiceIstruttore" Type="int" Nullable="false" />
           <Property Name="CodiceCorso" Type="int" Nullable="false" />
           <Property Name="MassimoPartecipanti" Type="int" Nullable="false" />
@@ -118,7 +118,7 @@
           <Key>
             <PropertyRef Name="CodiceOggetto" />
           </Key>
-          <Property Name="CodiceOggetto" Type="int" Nullable="false" />
+          <Property Name="CodiceOggetto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Quantita" Type="int" Nullable="false" />
           <Property Name="Prezzo" Type="real" Nullable="false" />
           <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
@@ -129,7 +129,7 @@
           <Key>
             <PropertyRef Name="CodicePagamento" />
           </Key>
-          <Property Name="CodicePagamento" Type="int" Nullable="false" />
+          <Property Name="CodicePagamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumeroLezioniRimaste" Type="int" Nullable="false" />
           <Property Name="Data" Type="date" Nullable="false" />
           <Property Name="CodiceIscritto" Type="int" Nullable="false" />
@@ -150,7 +150,7 @@
           <Key>
             <PropertyRef Name="CodiceSede" />
           </Key>
-          <Property Name="CodiceSede" Type="int" Nullable="false" />
+          <Property Name="CodiceSede" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Citta" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="SkatePark" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
@@ -158,7 +158,7 @@
           <Key>
             <PropertyRef Name="CodiceTariffario" />
           </Key>
-          <Property Name="CodiceTariffario" Type="int" Nullable="false" />
+          <Property Name="CodiceTariffario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumeroLezioni" Type="int" Nullable="false" />
           <Property Name="Prezzo" Type="real" Nullable="false" />
         </EntityType>
@@ -166,7 +166,7 @@
           <Key>
             <PropertyRef Name="CodiceTipo" />
           </Key>
-          <Property Name="CodiceTipo" Type="int" Nullable="false" />
+          <Property Name="CodiceTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="TutoraggioCentroEstivo">
@@ -181,7 +181,7 @@
           <Key>
             <PropertyRef Name="CodiceVendita" />
           </Key>
-          <Property Name="CodiceVendita" Type="int" Nullable="false" />
+          <Property Name="CodiceVendita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodiceOggetto" Type="int" Nullable="false" />
           <Property Name="Quantita" Type="int" Nullable="false" />
           <Property Name="Data" Type="date" Nullable="false" />
@@ -693,7 +693,7 @@
           <Key>
             <PropertyRef Name="CodiceAttrezzo" />
           </Key>
-          <Property Name="CodiceAttrezzo" Type="Int32" Nullable="false" />
+          <Property Name="CodiceAttrezzo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodiceSede" Type="Int32" Nullable="false" />
           <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKpossiede_FK" FromRole="Attrezzatura" ToRole="Sede" />
@@ -703,7 +703,7 @@
           <Key>
             <PropertyRef Name="CodiceCentroEstivo" />
           </Key>
-          <Property Name="CodiceCentroEstivo" Type="Int32" Nullable="false" />
+          <Property Name="CodiceCentroEstivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DataInizio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DataFine" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -714,7 +714,7 @@
           <Key>
             <PropertyRef Name="CodiceCorso" />
           </Key>
-          <Property Name="CodiceCorso" Type="Int32" Nullable="false" />
+          <Property Name="CodiceCorso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Livello" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CodiceSede" Type="Int32" Nullable="false" />
@@ -725,7 +725,7 @@
           <Key>
             <PropertyRef Name="CodiceGara" />
           </Key>
-          <Property Name="CodiceGara" Type="Int32" Nullable="false" />
+          <Property Name="CodiceGara" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Città" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -736,7 +736,7 @@
           <Key>
             <PropertyRef Name="CodiceIscritto" />
           </Key>
-          <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
+          <Property Name="CodiceIscritto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Cognome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Eta" Type="Int32" Nullable="false" />
@@ -753,7 +753,7 @@
           <Key>
             <PropertyRef Name="CodiceIstruttore" />
           </Key>
-          <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" />
+          <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Cognome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Eta" Type="Int32" Nullable="false" />
@@ -767,14 +767,14 @@
           <Key>
             <PropertyRef Name="CodiceLezione" />
           </Key>
-          <Property Name="CodiceLezione" Type="Int32" Nullable="false" />
+          <Property Name="CodiceLezione" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" />
           <Property Name="CodiceCorso" Type="Int32" Nullable="false" />
           <Property Name="MassimoPartecipanti" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Corso" Relationship="SkateSchoolModel.FKappartiene_FK" FromRole="Lezione" ToRole="Corso" />
-          <NavigationProperty Name="Istruttori" Relationship="SkateSchoolModel.FKgestione" FromRole="Lezione" ToRole="Istruttore" />
-          <NavigationProperty Name="Iscritti" Relationship="SkateSchoolModel.Iscrizione" FromRole="Lezione" ToRole="Iscritto" />
+          <NavigationProperty Name="Istruttore" Relationship="SkateSchoolModel.FKgestione" FromRole="Lezione" ToRole="Istruttore" />
+          <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.Iscrizione" FromRole="Lezione" ToRole="Iscritto" />
         </EntityType>
         <EntityType Name="LezionePrivata">
           <Key>
@@ -793,21 +793,21 @@
           <Key>
             <PropertyRef Name="CodiceOggetto" />
           </Key>
-          <Property Name="CodiceOggetto" Type="Int32" Nullable="false" />
+          <Property Name="CodiceOggetto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Quantita" Type="Int32" Nullable="false" />
           <Property Name="Prezzo" Type="Single" Nullable="false" />
           <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CodiceSede" Type="Int32" Nullable="false" />
           <Property Name="CodiceTipo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TipologiaOggetto" Relationship="SkateSchoolModel.FKappartenenza_FK" FromRole="Oggetto" ToRole="TipologiaOggetto" />
-          <NavigationProperty Name="Vendite" Relationship="SkateSchoolModel.FKR" FromRole="Oggetto" ToRole="Vendita" />
-          <NavigationProperty Name="Sedi" Relationship="SkateSchoolModel.FKvendita_FK" FromRole="Oggetto" ToRole="Sede" />
+          <NavigationProperty Name="Vendita" Relationship="SkateSchoolModel.FKR" FromRole="Oggetto" ToRole="Vendita" />
+          <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKvendita_FK" FromRole="Oggetto" ToRole="Sede" />
         </EntityType>
         <EntityType Name="Pagamento">
           <Key>
             <PropertyRef Name="CodicePagamento" />
           </Key>
-          <Property Name="CodicePagamento" Type="Int32" Nullable="false" />
+          <Property Name="CodicePagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NumeroLezioniRimaste" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
@@ -832,7 +832,7 @@
           <Key>
             <PropertyRef Name="CodiceSede" />
           </Key>
-          <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+          <Property Name="CodiceSede" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Citta" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="SkatePark" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Attrezzatura" Relationship="SkateSchoolModel.FKpossiede_FK" FromRole="Sede" ToRole="Attrezzatura" />
@@ -845,7 +845,7 @@
           <Key>
             <PropertyRef Name="CodiceTariffario" />
           </Key>
-          <Property Name="CodiceTariffario" Type="Int32" Nullable="false" />
+          <Property Name="CodiceTariffario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NumeroLezioni" Type="Int32" Nullable="false" />
           <Property Name="Prezzo" Type="Single" Nullable="false" />
           <NavigationProperty Name="Pagamento" Relationship="SkateSchoolModel.FKcomprende_FK" FromRole="Tariffario" ToRole="Pagamento" />
@@ -854,19 +854,19 @@
           <Key>
             <PropertyRef Name="CodiceTipo" />
           </Key>
-          <Property Name="CodiceTipo" Type="Int32" Nullable="false" />
+          <Property Name="CodiceTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Oggetti" Relationship="SkateSchoolModel.FKappartenenza_FK" FromRole="TipologiaOggetto" ToRole="Oggetto" />
+          <NavigationProperty Name="Oggetto" Relationship="SkateSchoolModel.FKappartenenza_FK" FromRole="TipologiaOggetto" ToRole="Oggetto" />
         </EntityType>
         <EntityType Name="Vendita">
           <Key>
             <PropertyRef Name="CodiceVendita" />
           </Key>
-          <Property Name="CodiceVendita" Type="Int32" Nullable="false" />
+          <Property Name="CodiceVendita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodiceOggetto" Type="Int32" Nullable="false" />
           <Property Name="Quantita" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Oggetti" Relationship="SkateSchoolModel.FKR" FromRole="Vendita" ToRole="Oggetto" />
+          <NavigationProperty Name="Oggetto" Relationship="SkateSchoolModel.FKR" FromRole="Vendita" ToRole="Oggetto" />
         </EntityType>
         <Association Name="FKpossiede_FK">
           <End Type="SkateSchoolModel.Sede" Role="Sede" Multiplicity="1" />

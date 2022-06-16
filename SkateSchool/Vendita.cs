@@ -19,6 +19,6 @@ namespace SkateSchool
         public int Quantita { get; set; }
         public System.DateTime Data { get; set; }
     
-        public virtual Oggetto Oggetti { get; set; }
+        public virtual Oggetto Oggetto { get; set; }
     }
 }

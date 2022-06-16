@@ -46,7 +46,7 @@ namespace SkateSchool.ViewModels
             };
             db.Iscritto.Add(iscritto);
             db.SaveChanges();
-            //OnPropertyChanged(nameof(Iscritti));
+            OnPropertyChanged(nameof(Iscritto));
         }
 
     }
