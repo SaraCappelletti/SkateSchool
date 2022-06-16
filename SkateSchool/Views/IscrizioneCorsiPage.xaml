@@ -24,7 +24,7 @@
         <TextBox IsEnabled="{Binding IsNotIscritto}" DataContext="{Binding TelefonoIscritto}" HorizontalAlignment="Left" Margin="458,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Nome" HorizontalAlignment="Left" Margin="158,30,0,0" VerticalAlignment="Top"/>
         <TextBox IsEnabled="{Binding IsNotIscritto}" DataContext="{Binding EtaIscritto}" HorizontalAlignment="Left" Margin="413,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40"/>
-        <Label Content="Cognome" HorizontalAlignment="Left" Margin="288,30,0,0" VerticalAlignment="Top"/>
+        <Label  Content="Cognome" HorizontalAlignment="Left" Margin="288,30,0,0" VerticalAlignment="Top"/>
         <Label Content="Età" HorizontalAlignment="Left" Margin="408,30,0,0" VerticalAlignment="Top"/>
         <Label Content="Telefono" HorizontalAlignment="Left" Margin="458,30,0,0" VerticalAlignment="Top"/>
         <Label Content="Seleziona Città" HorizontalAlignment="Left" Margin="28,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.384,0.562"/>

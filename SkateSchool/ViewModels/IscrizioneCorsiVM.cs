@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SkateSchool.ViewModels
 {
@@ -19,6 +15,7 @@ namespace SkateSchool.ViewModels
         public string CognomeIscritto { get; set; }
         public int EtaIscritto { get; set; }
         public string TelefonoIscritto { get; set; }
+        public string LivelloIscritto { get; set; }
 
         public Sede[] Sedi => db.Sede.ToArray();
         public Sede SedeSelected { get; set; }
@@ -44,7 +41,8 @@ namespace SkateSchool.ViewModels
                 Nome = NomeIscritto,
                 Cognome = CognomeIscritto,
                 Eta = EtaIscritto,
-                Telefono = TelefonoIscritto
+                Telefono = TelefonoIscritto,
+                Livello = "Base"
             };
             db.Iscritto.Add(iscritto);
             db.SaveChanges();

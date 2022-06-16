@@ -10,5 +10,20 @@
         <TabItem Header="Iscrizione corsi">
             <view:IscrizioneCorsiPage/>
         </TabItem>
+        <TabItem Header="Gare e Centri Estivi">
+            <view:IscrizioneGaraCentroEstivo/>
+        </TabItem>
+        <TabItem Header="Lezione Privata">
+            <view:IscrizioneLezionePrivataPage Margin="10,0,-10,0"/> 
+        </TabItem>
+        <TabItem Header="Negozio">
+            <view:Negozio/>
+        </TabItem>
+        <TabItem Header="Prestiti">
+            <view:Prestiti/>
+        </TabItem>
+        <TabItem Header="Pagamento">
+            <view:PagamentoPage/>
+        </TabItem>
     </TabControl>
 </Window>
