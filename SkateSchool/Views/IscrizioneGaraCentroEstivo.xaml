@@ -13,23 +13,39 @@
     </UserControl.DataContext>
 
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="87,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Nome" HorizontalAlignment="Left" Margin="87,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.477,0.573" Width="68"/>
-        <TextBox HorizontalAlignment="Left" Margin="223,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Cognome" HorizontalAlignment="Left" Margin="221,51,0,0" VerticalAlignment="Top"/>
-        <Label Content="Iscrivi a:" HorizontalAlignment="Left" Margin="26,113,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.234,-0.846"/>
-        <ComboBox ItemsSource="{Binding CentriEstivi}" DisplayMemberPath="Descrizione" SelectedItem="{Binding CentroSelected}" HorizontalAlignment="Left" Margin="172,157,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Descrizione" HorizontalAlignment="Left" Margin="172,131,0,0" VerticalAlignment="Top"/>
-        <ComboBox ItemsSource="{Binding CentriEstivi}" DisplayMemberPath="DataInizio" SelectedItem="{Binding CentroSelected}" HorizontalAlignment="Left" Margin="297,157,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Data Inizio" HorizontalAlignment="Left" Margin="292,131,0,0" VerticalAlignment="Top"/>
-        <Label Content="Dati:" HorizontalAlignment="Left" Margin="29,73,0,0" VerticalAlignment="Top"/>
-        <Label Content="Città" HorizontalAlignment="Left" Margin="169,199,0,0" VerticalAlignment="Top"/>
-        <ComboBox ItemsSource="{Binding Gare}" DisplayMemberPath="Categoria" SelectedItem="{Binding GaraSelected}" HorizontalAlignment="Left" Margin="297,220,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Categoria" HorizontalAlignment="Left" Margin="297,199,0,0" VerticalAlignment="Top"/>
-        <ComboBox ItemsSource="{Binding Gare}" DisplayMemberPath="Città" SelectedItem="{Binding GaraSelected}" HorizontalAlignment="Left" Margin="172,220,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Button Content="Iscrivi" HorizontalAlignment="Left" Margin="699,380,0,0" VerticalAlignment="Top"/>
-        <Button Click="{local:MethodBinding AddIscrittoCentroEstivo}" Content="Centro Estivo" HorizontalAlignment="Left" Margin="29,159,0,0" VerticalAlignment="Top"/>
-        <Button Click="{local:MethodBinding AddIscrittoGara}" Content="Gara" HorizontalAlignment="Left" Margin="29,222,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label Content="Iscrivi a:" HorizontalAlignment="Left" Margin="241,256,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.234,-0.846"/>
+        <Label Content="Descrizione" HorizontalAlignment="Left" Margin="153,287,0,0" VerticalAlignment="Top"/>
+        <Label Content="Data Inizio" HorizontalAlignment="Left" Margin="28,287,0,0" VerticalAlignment="Top"/>
+        <ComboBox ItemsSource="{Binding CentriEstivi}" SelectedItem="{Binding CentroSelected}" HorizontalAlignment="Left" Margin="28,313,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding DataInizio}"/>-<Run Text="{Binding DataFine}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Città" HorizontalAlignment="Left" Margin="28,344,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsEnabled="{Binding IsCittaSelected}" ItemsSource="{Binding CategoriaGare}" DisplayMemberPath="Categoria" SelectedItem="{Binding CategoriaSelected}" HorizontalAlignment="Left" Margin="153,369,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Categoria" HorizontalAlignment="Left" Margin="153,344,0,0" VerticalAlignment="Top"/>
+        <ComboBox ItemsSource="{Binding CittaGare}" DisplayMemberPath="Città" SelectedItem="{Binding CittaSelected}" HorizontalAlignment="Left" Margin="28,369,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Button IsEnabled="{Binding CanAddIscrittoCentroEstivo}" Click="{local:MethodBinding AddIscrittoCentroEstivo}" Content="Iscrivimi al Centro Estivo" HorizontalAlignment="Left" Margin="457,315,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button IsEnabled="{Binding CanAddIscrittoGara}" Click="{local:MethodBinding AddIscrittoGara}" Content="Iscrvimi alla Gara" HorizontalAlignment="Left" Margin="457,369,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListView ItemsSource="{Binding Iscritti}" SelectedItem="{Binding IscrittoSelected}" Margin="28,76,104,168">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Cognome" DisplayMemberBinding="{Binding Cognome}"/>
+                    <GridViewColumn Header="Età" DisplayMemberBinding="{Binding Eta}"/>
+                    <GridViewColumn Header="Telefono" DisplayMemberBinding="{Binding Telefono}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Seleziona Iscritto" HorizontalAlignment="Left" Margin="28,50,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsEnabled="{Binding IsCategoriaSelected}" ItemsSource="{Binding Gare}" DisplayMemberPath="Data" SelectedItem="{Binding GaraSelected}" HorizontalAlignment="Left" Margin="279,368,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Data" HorizontalAlignment="Left" Margin="279,343,0,0" VerticalAlignment="Top"/>
+        <TextBlock IsEnabled="{Binding CanAddIscrittoCentroEstivo}" HorizontalAlignment="Left" Margin="159,313,0,0" TextWrapping="Wrap" Text="{Binding CentroEstivoSelected.Descrizione}" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

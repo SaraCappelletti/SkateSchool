@@ -23,6 +23,7 @@ namespace SkateSchool
         public int CodiceTariffario { get; set; }
         public int NumeroLezioni { get; set; }
         public float Prezzo { get; set; }
+        public bool Privata { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pagamento> Pagamento { get; set; }

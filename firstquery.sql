@@ -62,10 +62,10 @@ INSERT INTO [dbo].[Vendita] ([CodiceVendita], [CodiceOggetto], [Quantita], [Data
 INSERT INTO [dbo].[Vendita] ([CodiceVendita], [CodiceOggetto], [Quantita], [Data]) VALUES (3, 3, 1, N'2022-06-12')
 SET IDENTITY_INSERT [dbo].[Vendita] OFF
 SET IDENTITY_INSERT [dbo].[Tariffario] ON
-INSERT INTO [dbo].[Tariffario] ([CodiceTariffario], [NumeroLezioni], [Prezzo]) VALUES (1, 1, 20)
-INSERT INTO [dbo].[Tariffario] ([CodiceTariffario], [NumeroLezioni], [Prezzo]) VALUES (2, 1, 10)
-INSERT INTO [dbo].[Tariffario] ([CodiceTariffario], [NumeroLezioni], [Prezzo]) VALUES (3, 5, 35)
-INSERT INTO [dbo].[Tariffario] ([CodiceTariffario], [NumeroLezioni], [Prezzo]) VALUES (4, 10, 80)
+INSERT INTO [dbo].[Tariffario] ([CodiceTariffario], [NumeroLezioni], [Prezzo], [Privata]) VALUES (1, 1, 20, 1)
+INSERT INTO [dbo].[Tariffario] ([CodiceTariffario], [NumeroLezioni], [Prezzo], [Privata]) VALUES (2, 1, 10, 0)
+INSERT INTO [dbo].[Tariffario] ([CodiceTariffario], [NumeroLezioni], [Prezzo], [Privata]) VALUES (3, 5, 35, 0)
+INSERT INTO [dbo].[Tariffario] ([CodiceTariffario], [NumeroLezioni], [Prezzo], [Privata]) VALUES (4, 10, 80, 0)
 SET IDENTITY_INSERT [dbo].[Tariffario] OFF
 SET IDENTITY_INSERT [dbo].[Pagamento] ON
 INSERT INTO [dbo].[Pagamento] ([CodicePagamento], [NumeroLezioniRimaste], [Data], [CodiceIscritto], [CodiceTariffario]) VALUES (1, 10, N'2022-06-13', 5, 4)

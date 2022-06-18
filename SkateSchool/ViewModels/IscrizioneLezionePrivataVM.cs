@@ -11,29 +11,34 @@ namespace SkateSchool.ViewModels
         SkateSchoolEntities db = new SkateSchoolEntities();
 
         public Iscritto[] Iscritti => db.Iscritto.ToArray();
-        public string NomeIscritto { get; set; }
-        public string CognomeIscritto { get; set; }
-        public int CodIscritto { get; set; }
+        public Iscritto IscrittoSelected { get; set; }
 
-        public Istruttore[] Istruttori => db.Istruttore.ToArray();
-        public string NomeIstruttore{ get; set; }
-        public string CognomeIstruttore{ get; set; }
-        public int CodIstruttore { get; set; }
+        public DateTime? DataSelected { get; set; }
+
+        public TimeSpan[] OrariDisponibili { get; } = 
+            Enumerable.Range(8, 22).SelectMany(h => new[] { 0, 15, 30, 45 }.Select(m => new TimeSpan(h, m, 0))).ToArray();
+        public TimeSpan? OrarioSelected { get; set; }
+
+        public DateTime? DataOraLezione => DataSelected?.Add(OrarioSelected.Value);
+
+        public Istruttore[] Istruttori => IsDataOraSelected ? 
+            db.Istruttore.Where(i => i.Lezione.Cast<ILezioneBase>().Concat(i.LezionePrivata).All(l => !l.IsDateTimeDuringLezione(DataOraLezione.Value))).ToArray() : null;
+        public Istruttore IstruttoreSelected { get; set; }
 
         public Sede[] Sedi => db.Sede.ToArray();
-        public string SedeSelected { get; set; }
-        public int CodSede { get; set; }
+        public Sede SedeSelected { get; set; }
 
-        public DateTime DataLezione { get; set; }
+        public bool IsDataOraSelected => DataSelected != null && OrarioSelected != null;
+        public bool CanAddLezione => IsDataOraSelected && IscrittoSelected != null && IstruttoreSelected != null && SedeSelected != null;
 
         public void AddLezionePrivata()
         {
             var lezionePrivata = new LezionePrivata
             {
-                CodiceIstruttore = CodIstruttore,
-                Data = DataLezione,
-                CodiceSede = CodSede,
-                CodiceIscritto = CodIscritto
+                CodiceIstruttore = IstruttoreSelected.CodiceIstruttore,
+                CodiceSede = SedeSelected.CodiceSede,
+                CodiceIscritto = IscrittoSelected.CodiceIscritto,
+                Data = DataOraLezione.Value
             };
             db.LezionePrivata.Add(lezionePrivata);
             db.SaveChanges();

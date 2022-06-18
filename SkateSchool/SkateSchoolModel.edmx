@@ -161,6 +161,7 @@
           <Property Name="CodiceTariffario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumeroLezioni" Type="int" Nullable="false" />
           <Property Name="Prezzo" Type="real" Nullable="false" />
+          <Property Name="Privata" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TipologiaOggetto">
           <Key>
@@ -744,8 +745,8 @@
           <Property Name="Livello" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Pagamento" Relationship="SkateSchoolModel.FKeffettuato_FK" FromRole="Iscritto" ToRole="Pagamento" />
           <NavigationProperty Name="Prestito" Relationship="SkateSchoolModel.FKprende_FK" FromRole="Iscritto" ToRole="Prestito" />
-          <NavigationProperty Name="LezionePrivata" Relationship="SkateSchoolModel.FKsostiene_FK" FromRole="Iscritto" ToRole="LezionePrivata" />
-          <NavigationProperty Name="Lezione" Relationship="SkateSchoolModel.Iscrizione" FromRole="Iscritto" ToRole="Lezione" />
+          <NavigationProperty Name="LezioniPrivate" Relationship="SkateSchoolModel.FKsostiene_FK" FromRole="Iscritto" ToRole="LezionePrivata" />
+          <NavigationProperty Name="Lezioni" Relationship="SkateSchoolModel.Iscrizione" FromRole="Iscritto" ToRole="Lezione" />
           <NavigationProperty Name="CentroEstivo" Relationship="SkateSchoolModel.IscrizioneCentroEstivo" FromRole="Iscritto" ToRole="CentroEstivo" />
           <NavigationProperty Name="Gara" Relationship="SkateSchoolModel.IscrizioneGara" FromRole="Iscritto" ToRole="Gara" />
         </EntityType>
@@ -849,6 +850,7 @@
           <Property Name="NumeroLezioni" Type="Int32" Nullable="false" />
           <Property Name="Prezzo" Type="Single" Nullable="false" />
           <NavigationProperty Name="Pagamento" Relationship="SkateSchoolModel.FKcomprende_FK" FromRole="Tariffario" ToRole="Pagamento" />
+          <Property Name="Privata" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="TipologiaOggetto">
           <Key>
@@ -1191,6 +1193,7 @@
           <EntitySetMapping Name="Tariffario">
             <EntityTypeMapping TypeName="SkateSchoolModel.Tariffario">
               <MappingFragment StoreEntitySet="Tariffario">
+                <ScalarProperty Name="Privata" ColumnName="Privata" />
                 <ScalarProperty Name="Prezzo" ColumnName="Prezzo" />
                 <ScalarProperty Name="NumeroLezioni" ColumnName="NumeroLezioni" />
                 <ScalarProperty Name="CodiceTariffario" ColumnName="CodiceTariffario" />

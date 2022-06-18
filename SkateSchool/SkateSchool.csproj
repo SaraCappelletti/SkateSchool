@@ -98,6 +98,11 @@
     <Compile Include="Model\Corso.cs" />
     <Compile Include="Model\Iscritto.cs" />
     <Compile Include="Model\Istruttore.cs" />
+    <Compile Include="Model\Lezione.cs" />
+    <Compile Include="Model\LezioneBase.cs" />
+    <Compile Include="Model\LezionePrivata.cs" />
+    <Compile Include="Model\Sede.cs" />
+    <Compile Include="Model\Tariffario.cs" />
     <Compile Include="Oggetto.cs">
       <DependentUpon>SkateSchoolModel.tt</DependentUpon>
     </Compile>
@@ -151,14 +156,14 @@
       <DependentUpon>IscrizioneLezionePrivataPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MethodBindingExtension.cs" />
-    <Compile Include="Views\Negozio.xaml.cs">
-      <DependentUpon>Negozio.xaml</DependentUpon>
+    <Compile Include="Views\NegozioPage.xaml.cs">
+      <DependentUpon>NegozioPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PagamentoPage.xaml.cs">
       <DependentUpon>PagamentoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Prestiti.xaml.cs">
-      <DependentUpon>Prestiti.xaml</DependentUpon>
+    <Compile Include="Views\PrestitiPage.xaml.cs">
+      <DependentUpon>PrestitiPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -184,7 +189,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Negozio.xaml">
+    <Page Include="Views\NegozioPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,7 +197,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Prestiti.xaml">
+    <Page Include="Views\PrestitiPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

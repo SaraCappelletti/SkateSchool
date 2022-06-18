@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace SkateSchool.ViewModels
 {
@@ -6,20 +7,32 @@ namespace SkateSchool.ViewModels
     {
         SkateSchoolEntities db = new SkateSchoolEntities();
 
-        public Oggetto[] Oggetti => db.Oggetto.ToArray();
+        public Sede[] Sedi => db.Sede.ToArray();
+        public Sede SedeSelected { get; set; }
 
-        public decimal Prezzo { get; set; }
-        public int QuantitaDisponibile { get; set; }
-        public int QuantitaVendita { get; set; }
+        public Oggetto[] Oggetti => IsSedeSelected ? db.Oggetto.Where(o => o.Quantita > 0 && o.CodiceSede == SedeSelected.CodiceSede).ToArray() : null;
+        public Oggetto OggettoSelected { get; set; }
 
+        public int[] QuantitaDisponibili => IsOggettoSelected ? Enumerable.Range(1, OggettoSelected.Quantita).ToArray() : null;
+        public int? QuantitaSelected { get; set; }
 
+        public bool IsSedeSelected => SedeSelected != null;
+        public bool IsOggettoSelected => OggettoSelected != null;
+        public bool CanPagare => OggettoSelected != null && QuantitaSelected != null;
 
-        /*public void UpdateQuantita()
+        public void AddVendita()
         {
-            Oggetto.Quantita = QuantitaDisponibile.Value;
+            var vendita = new Vendita
+            {
+                CodiceOggetto = OggettoSelected.CodiceOggetto,
+                Data = DateTime.Now,
+                Quantita = QuantitaSelected.Value
+            };
+            db.Vendita.Add(vendita);
+            OggettoSelected.Quantita -= QuantitaSelected.Value;
             db.SaveChanges();
-            OnPropertyChanged(nameof(Prodotti), nameof(QuantitaDisponibile), nameof(CanUpdateQuantita));
-        }*/
+            OnPropertyChanged(nameof(Oggetti));
+        }
 
     }
 }

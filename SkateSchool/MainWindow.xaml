@@ -5,25 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:SkateSchool.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        ResizeMode="NoResize"
+        Title="MainWindow" Height="500" Width="800">
     <TabControl>
+        <TabItem Header="Pagamento">
+            <view:PagamentoPage/>
+        </TabItem>
         <TabItem Header="Iscrizione corsi">
             <view:IscrizioneCorsiPage/>
         </TabItem>
+        <TabItem Header="Lezione Privata">
+            <view:IscrizioneLezionePrivataPage Margin="10,0,-10,0"/>
+        </TabItem>
         <TabItem Header="Gare e Centri Estivi">
             <view:IscrizioneGaraCentroEstivo/>
-        </TabItem>
-        <TabItem Header="Lezione Privata">
-            <view:IscrizioneLezionePrivataPage Margin="10,0,-10,0"/> 
         </TabItem>
         <TabItem Header="Negozio">
             <view:Negozio/>
         </TabItem>
         <TabItem Header="Prestiti">
             <view:Prestiti/>
-        </TabItem>
-        <TabItem Header="Pagamento">
-            <view:PagamentoPage/>
         </TabItem>
     </TabControl>
 </Window>

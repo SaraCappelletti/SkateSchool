@@ -10,26 +10,38 @@ namespace SkateSchool.ViewModels
     {
         SkateSchoolEntities db = new SkateSchoolEntities();
 
-        public CentroEstivo[] CentriEstivi => db.CentroEstivo.ToArray();
-        public CentroEstivo CentroSelected { get; set; }
-        public bool IsCentroEstivo { get; set; }
-
-        public Gara[] Gare => db.Gara.ToArray();
-        public Gara GaraSelected { get; set; }
-        public bool IsGara => !IsCentroEstivo;
-
         public Iscritto[] Iscritti => db.Iscritto.ToArray();
-        public string NomeIscritto { get; set; }
-        public string CognomeIscritto { get; set; }
+        public Iscritto IscrittoSelected { get; set; }
+
+        private IQueryable<Gara> GareFuture => db.Gara.Where(g => g.Data > DateTime.Now);
+
+        public string[] CittaGare => GareFuture.Select(g => g.Città).Distinct().ToArray();
+        public string CittaSelected { get; set; }
+
+        public string[] CategoriaGare => GareFuture.Where(g => g.Città == CittaSelected).Select(g => g.Categoria).Distinct().ToArray();
+        public string CategoriaSelected { get; set; }
+
+        public Gara[] Gare => GareFuture.Where(g => g.Città == CittaSelected && g.Categoria == CategoriaSelected).ToArray();
+        public Gara GaraSelected { get; set; }
+
+        public CentroEstivo[] CentriEstivi => db.CentroEstivo.Where(c => c.DataFine >= DateTime.Now).ToArray();
+        public CentroEstivo CentroEstivoSelected { get; set; }
+
+        public bool IsCittaSelected => CittaSelected != null;
+        public bool IsCategoriaSelected => CategoriaSelected != null;
+        public bool CanAddIscrittoGara => IsCittaSelected && IsCategoriaSelected && GaraSelected != null;
+        public bool CanAddIscrittoCentroEstivo => CentroEstivoSelected != null;
 
         public void AddIscrittoCentroEstivo()
         {
-            
+            CentroEstivoSelected.Iscritto.Add(IscrittoSelected);
+            db.SaveChanges();
         }
 
         public void AddIscrittoGara()
         {
-
+            GaraSelected.Iscritto.Add(IscrittoSelected);
+            db.SaveChanges();
         }
 
     }

@@ -19,8 +19,8 @@ namespace SkateSchool
         {
             this.Pagamento = new HashSet<Pagamento>();
             this.Prestito = new HashSet<Prestito>();
-            this.LezionePrivata = new HashSet<LezionePrivata>();
-            this.Lezione = new HashSet<Lezione>();
+            this.LezioniPrivate = new HashSet<LezionePrivata>();
+            this.Lezioni = new HashSet<Lezione>();
             this.CentroEstivo = new HashSet<CentroEstivo>();
             this.Gara = new HashSet<Gara>();
         }
@@ -37,9 +37,9 @@ namespace SkateSchool
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prestito> Prestito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LezionePrivata> LezionePrivata { get; set; }
+        public virtual ICollection<LezionePrivata> LezioniPrivate { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lezione> Lezione { get; set; }
+        public virtual ICollection<Lezione> Lezioni { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CentroEstivo> CentroEstivo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

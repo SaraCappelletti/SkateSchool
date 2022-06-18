@@ -12,8 +12,31 @@
         <vm:PagamentoVM/>
     </UserControl.DataContext>
     <Grid>
-        <ComboBox ItemsSource="{Binding Tariffari}" DisplayMemberPath="NumeroLezioni" HorizontalAlignment="Left" Margin="62,110,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Seleziona Tariffario" HorizontalAlignment="Left" Margin="62,79,0,0" VerticalAlignment="Top"/>
+        <ComboBox SelectedItem="{Binding TariffarioSelected}" ItemsSource="{Binding Tariffari}" DisplayMemberPath="NomeCompleto" HorizontalAlignment="Left" Margin="494,382,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Seleziona Tariffario" HorizontalAlignment="Left" Margin="494,351,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Sono già iscritto" IsChecked="{Binding IsIscritto}" HorizontalAlignment="Left" Margin="28,62,0,0" VerticalAlignment="Top"/>
+        <Grid IsEnabled="{Binding IsNotIscritto}" Height="53" VerticalAlignment="Top" Margin="175,50,0,0" HorizontalAlignment="Left" Width="545">
+            <Label Content="Nome" HorizontalAlignment="Left" Margin="0,0,0,27"/>
+            <Label  Content="Cognome" HorizontalAlignment="Left" Margin="130,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Età" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Telefono" HorizontalAlignment="Left" Margin="300,0,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding NomeIscritto}" HorizontalAlignment="Left" Margin="5,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox Text="{Binding CognomeIscritto}"  HorizontalAlignment="Left" Margin="130,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox Text="{Binding EtaIscritto}" HorizontalAlignment="Left" Margin="255,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40"/>
+            <TextBox Text="{Binding TelefonoIscritto}" HorizontalAlignment="Left" Margin="300,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Button IsEnabled="{Binding CanAddIscritto}" Click="{local:MethodBinding AddIscritto}" Content="Iscrivimi" Margin="0,26,24,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.17" HorizontalAlignment="Right" Width="50"/>
+        </Grid>
+        <Button IsEnabled="{Binding CanPagare}" Click="{local:MethodBinding AddPagamento}" Content="Paga" HorizontalAlignment="Left" Margin="666,382,0,0" VerticalAlignment="Top" Width="30"/>
+        <ListView ItemsSource="{Binding Iscritti}" SelectedItem="{Binding IscrittoSelected}" IsEnabled="{Binding IsIscritto}" Margin="28,108,104,115">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Cognome" DisplayMemberBinding="{Binding Cognome}"/>
+                    <GridViewColumn Header="Età" DisplayMemberBinding="{Binding Eta}"/>
+                    <GridViewColumn Header="Telefono" DisplayMemberBinding="{Binding Telefono}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </UserControl>

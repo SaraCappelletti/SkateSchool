@@ -16,6 +16,7 @@ namespace SkateSchool.ViewModels
         public int EtaIscritto { get; set; }
         public string TelefonoIscritto { get; set; }
         public string LivelloIscritto { get; set; }
+        public Iscritto IscrittoSelected { get; set; }
 
         public Sede[] Sedi => db.Sede.ToArray();
         public Sede SedeSelected { get; set; }
@@ -26,27 +27,20 @@ namespace SkateSchool.ViewModels
         public Lezione[] Lezioni => CorsoSelected?.Lezioni.ToArray();
         public Lezione LezioneSelected { get; set; }
 
+        public int? LezioniRimaste => IscrittoSelected?.Pagamento.Where(p => !p.Tariffario.Privata).Sum(p => p.NumeroLezioniRimaste);
+
         public bool IsSedeSelected => SedeSelected != null;
         public bool IsCorsoSelected => CorsoSelected != null;
+        public bool IsIscrittoSelected => IscrittoSelected != null;
+        public bool CanPrenotare => IscrittoSelected != null && LezioneSelected != null && LezioniRimaste != 0;
 
-        public void FaQualcosa()
+        public void PrenotaLezione()
         {
-            Debug.Print("Sto facendo qualcosa!");
-        }
-
-        public void AddIscritto()
-        {
-            var iscritto = new Iscritto
-            {
-                Nome = NomeIscritto,
-                Cognome = CognomeIscritto,
-                Eta = EtaIscritto,
-                Telefono = TelefonoIscritto,
-                Livello = "Base"
-            };
-            db.Iscritto.Add(iscritto);
+            IscrittoSelected.Lezioni.Add(LezioneSelected);
+            var pagamento = IscrittoSelected.Pagamento.OrderBy(p => p.Data).First(p => p.NumeroLezioniRimaste > 0 && !p.Tariffario.Privata);
+            pagamento.NumeroLezioniRimaste--;
             db.SaveChanges();
-            OnPropertyChanged(nameof(Iscritto));
+            OnPropertyChanged(nameof(LezioniRimaste));
         }
 
     }

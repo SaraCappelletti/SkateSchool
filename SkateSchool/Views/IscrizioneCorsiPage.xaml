@@ -13,25 +13,26 @@
     </UserControl.DataContext>
 
     <Grid>
-        <Button Click="{local:MethodBinding FaQualcosa}" Content="Prenota Lezione" HorizontalAlignment="Left" Margin="622,274,0,0" VerticalAlignment="Top"/>
-
-        <ComboBox ItemsSource="{Binding Sedi}" DisplayMemberPath="Citta" SelectedItem="{Binding SedeSelected}" HorizontalAlignment="Left" Margin="28,175,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox IsEnabled="{Binding IsSedeSelected}" ItemsSource="{Binding Corsi}" DisplayMemberPath="NomeCompleto" SelectedItem="{Binding CorsoSelected}" HorizontalAlignment="Left" Margin="214,175,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
-        <CheckBox Content="Sono già iscritto" IsChecked="{Binding IsIscritto}" HorizontalAlignment="Left" Margin="28,59,0,0" VerticalAlignment="Top"/>
-        <ComboBox IsEnabled="{Binding IsIscritto}" ItemsSource="{Binding Iscritti}" DisplayMemberPath="NomeCompleto" HorizontalAlignment="Left" Margin="28,90,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox IsEnabled="{Binding IsNotIscritto}" Text="{Binding NomeIscritto}" HorizontalAlignment="Left" Margin="163,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox IsEnabled="{Binding IsNotIscritto}" Text="{Binding CognomeIscritto}"  HorizontalAlignment="Left" Margin="288,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox IsEnabled="{Binding IsNotIscritto}" Text="{Binding EtaIscritto}" HorizontalAlignment="Left" Margin="413,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40"/>
-        <TextBox IsEnabled="{Binding IsNotIscritto}" Text="{Binding TelefonoIscritto}" HorizontalAlignment="Left" Margin="458,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Nome" HorizontalAlignment="Left" Margin="158,30,0,0" VerticalAlignment="Top"/>
-        <Label  Content="Cognome" HorizontalAlignment="Left" Margin="288,30,0,0" VerticalAlignment="Top"/>
-        <Label Content="Età" HorizontalAlignment="Left" Margin="408,30,0,0" VerticalAlignment="Top"/>
-        <Label Content="Telefono" HorizontalAlignment="Left" Margin="458,30,0,0" VerticalAlignment="Top"/>
-        <Label Content="Seleziona Città" HorizontalAlignment="Left" Margin="28,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.384,0.562"/>
-        <Label Content="Seleziona Corso" HorizontalAlignment="Left" Margin="214,149,0,0" VerticalAlignment="Top"/>
-        <Label Content="Seleziona Lezione" HorizontalAlignment="Left" Margin="421,149,0,0" VerticalAlignment="Top"/>
-        <ComboBox IsEnabled="{Binding IsCorsoSelected}" ItemsSource="{Binding Lezioni}" DisplayMemberPath="Data" SelectedItem="{Binding LezioneSelected}" HorizontalAlignment="Left" Margin="426,175,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Click="{local:MethodBinding AddIscritto}" Content="Iscrivimi" HorizontalAlignment="Left" Margin="622,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.17"/>
+        <Button IsEnabled="{Binding CanPrenotare}" Click="Button_Click" Content="Prenota Lezione" HorizontalAlignment="Left" Margin="607,364,0,0" VerticalAlignment="Top" Width="90"/>
+        <ComboBox ItemsSource="{Binding Sedi}" DisplayMemberPath="NomeCompleto" SelectedItem="{Binding SedeSelected}" HorizontalAlignment="Left" Margin="28,357,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox IsEnabled="{Binding IsSedeSelected}" ItemsSource="{Binding Corsi}" DisplayMemberPath="NomeCompleto" SelectedItem="{Binding CorsoSelected}" HorizontalAlignment="Left" Margin="224,362,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ListView ItemsSource="{Binding Iscritti}" SelectedItem="{Binding IscrittoSelected}" Margin="28,76,104,168">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Cognome" DisplayMemberBinding="{Binding Cognome}"/>
+                    <GridViewColumn Header="Età" DisplayMemberBinding="{Binding Eta}"/>
+                    <GridViewColumn Header="Telefono" DisplayMemberBinding="{Binding Telefono}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Seleziona Sede" HorizontalAlignment="Left" Margin="28,331,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.384,0.562"/>
+        <Label Content="Seleziona Corso" HorizontalAlignment="Left" Margin="224,336,0,0" VerticalAlignment="Top"/>
+        <Label Content="Seleziona Lezione" HorizontalAlignment="Left" Margin="411,331,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsEnabled="{Binding IsCorsoSelected}" ItemsSource="{Binding Lezioni}" DisplayMemberPath="Data" SelectedItem="{Binding LezioneSelected}" HorizontalAlignment="Left" Margin="411,362,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Numero lezioni rimaste:" HorizontalAlignment="Left" Margin="23,285,0,0" VerticalAlignment="Top"/>
+        <TextBlock IsEnabled="{Binding IsIscrittoSelected}" Text="{Binding LezioniRimaste}" HorizontalAlignment="Left" Margin="161,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label Content="Seleziona Iscritto" HorizontalAlignment="Left" Margin="28,50,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

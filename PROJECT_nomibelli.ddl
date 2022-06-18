@@ -137,6 +137,7 @@ create table Tariffario (
      CodiceTariffario int not null identity,
      NumeroLezioni int not null,
      Prezzo real not null,
+     Privata bit not null,
      constraint ID_TARIFFARIO_ID primary key (CodiceTariffario));
 
 create table TipologiaOggetto (
