@@ -1,7 +1,7 @@
 BEGIN TRANSACTION
 SET IDENTITY_INSERT [dbo].[CentroEstivo] ON
-INSERT INTO [dbo].[CentroEstivo] ([CodiceCentroEstivo], [DataInizio], [DataFine], [Descrizione]) VALUES (1, N'2022-06-06', N'2022-06-11', N'Camp Estivo al Jurassic')
-INSERT INTO [dbo].[CentroEstivo] ([CodiceCentroEstivo], [DataInizio], [DataFine], [Descrizione]) VALUES (2, N'2022-06-13', N'2022-06-17', N'Camp Estivo al Jurassic')
+INSERT INTO [dbo].[CentroEstivo] ([CodiceCentroEstivo], [DataInizio], [DataFine], [Descrizione]) VALUES (1, N'2022-06-30', N'2022-07-05', N'Camp Estivo al Jurassic')
+INSERT INTO [dbo].[CentroEstivo] ([CodiceCentroEstivo], [DataInizio], [DataFine], [Descrizione]) VALUES (2, N'2022-06-15', N'2022-06-30', N'Camp Estivo lungo al Jurassic')
 SET IDENTITY_INSERT [dbo].[CentroEstivo] OFF
 SET IDENTITY_INSERT [dbo].[Sede] ON
 INSERT INTO [dbo].[Sede] ([CodiceSede], [Citta], [SkatePark]) VALUES (1, N'Cesena', N'Jurassic')
@@ -17,9 +17,11 @@ INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]
 INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]) VALUES (5, N'Bambini', N'Avanzato', 4)
 SET IDENTITY_INSERT [dbo].[Corso] OFF
 SET IDENTITY_INSERT [dbo].[Gara] ON
-INSERT INTO [dbo].[Gara] ([CodiceGara], [Data], [Città], [Categoria], [Descrizione]) VALUES (1, N'2022-05-17', N'San Mauro Pascoli', N'Baby', N'Fino agli 8 anni')
-INSERT INTO [dbo].[Gara] ([CodiceGara], [Data], [Città], [Categoria], [Descrizione]) VALUES (2, N'2022-05-17', N'San Mauro Pascoli', N'Senior', N'Dopo i 18 anni')
-INSERT INTO [dbo].[Gara] ([CodiceGara], [Data], [Città], [Categoria], [Descrizione]) VALUES (3, N'2022-05-17', N'San Mauro Pascoli', N'Teenage', N'Da 8 a 18')
+INSERT INTO [dbo].[Gara] ([CodiceGara], [Data], [Citta], [Categoria], [Descrizione]) VALUES (1, N'2022-07-17', N'San Mauro Pascoli', N'Baby', N'Fino agli 8 anni')
+INSERT INTO [dbo].[Gara] ([CodiceGara], [Data], [Citta], [Categoria], [Descrizione]) VALUES (2, N'2022-07-17', N'San Mauro Pascoli', N'Senior', N'Dopo i 18 anni')
+INSERT INTO [dbo].[Gara] ([CodiceGara], [Data], [Citta], [Categoria], [Descrizione]) VALUES (3, N'2022-07-17', N'San Mauro Pascoli', N'Teenage', N'Da 8 a 18')
+INSERT INTO [dbo].[Gara] ([CodiceGara], [Data], [Citta], [Categoria], [Descrizione]) VALUES (4, N'2022-07-01', N'Forlì', N'Senior', N'Dopo i 18 anni')
+INSERT INTO [dbo].[Gara] ([CodiceGara], [Data], [Citta], [Categoria], [Descrizione]) VALUES (5, N'2022-07-01', N'Forlì', N'Teenage', N'Da 8 a 18')
 SET IDENTITY_INSERT [dbo].[Gara] OFF
 SET IDENTITY_INSERT [dbo].[Iscritto] ON
 INSERT INTO [dbo].[Iscritto] ([CodiceIscritto], [Nome], [Cognome], [Eta], [Telefono], [Livello]) VALUES (1, N'Sara', N'Cappelletti', 20, N'3356894488', N'base')
@@ -73,17 +75,17 @@ INSERT INTO [dbo].[Pagamento] ([CodicePagamento], [NumeroLezioniRimaste], [Data]
 INSERT INTO [dbo].[Pagamento] ([CodicePagamento], [NumeroLezioniRimaste], [Data], [CodiceIscritto], [CodiceTariffario]) VALUES (3, 5, N'2022-06-10', 4, 3)
 SET IDENTITY_INSERT [dbo].[Pagamento] OFF
 SET IDENTITY_INSERT [dbo].[Attrezzatura] ON
-INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (1, 1, N'Skateboard giallo')
-INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (2, 1, N'Casco nero')
-INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (3, 1, N'Skateboard nero')
-INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (4, 2, N'Casco rosso')
-INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (5, 2, N'Skateboard nero')
-INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (6, 4, N'Casco giallo')
-INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzo], [CodiceSede], [Descrizione]) VALUES (7, 3, N'Casco blu')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzatura], [CodiceSede], [Descrizione]) VALUES (1, 1, N'Skateboard giallo')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzatura], [CodiceSede], [Descrizione]) VALUES (2, 1, N'Casco nero')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzatura], [CodiceSede], [Descrizione]) VALUES (3, 1, N'Skateboard nero')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzatura], [CodiceSede], [Descrizione]) VALUES (4, 2, N'Casco rosso')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzatura], [CodiceSede], [Descrizione]) VALUES (5, 2, N'Skateboard nero')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzatura], [CodiceSede], [Descrizione]) VALUES (6, 4, N'Casco giallo')
+INSERT INTO [dbo].[Attrezzatura] ([CodiceAttrezzatura], [CodiceSede], [Descrizione]) VALUES (7, 3, N'Casco blu')
 SET IDENTITY_INSERT [dbo].[Attrezzatura] OFF
 
-INSERT INTO [dbo].[Prestito] ([CodiceIscritto], [CodiceAttrezzo], [Data], [Restituito]) VALUES (1, 1, N'2022-06-14', 1)
-INSERT INTO [dbo].[Prestito] ([CodiceIscritto], [CodiceAttrezzo], [Data], [Restituito]) VALUES (4, 7, N'2022-06-13', 1)
+INSERT INTO [dbo].[Prestito] ([CodiceIscritto], [CodiceAttrezzatura], [Data], [Restituito]) VALUES (1, 1, N'2022-06-14', 1)
+INSERT INTO [dbo].[Prestito] ([CodiceIscritto], [CodiceAttrezzatura], [Data], [Restituito]) VALUES (4, 7, N'2022-06-13', 1)
 
 INSERT INTO [dbo].[TutoraggioCentroEstivo] ([CodiceIstruttore], [CodiceCentroEstivo]) VALUES (2, 1)
 INSERT INTO [dbo].[TutoraggioCentroEstivo] ([CodiceIstruttore], [CodiceCentroEstivo]) VALUES (3, 1)

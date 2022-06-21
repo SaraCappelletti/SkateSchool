@@ -22,7 +22,7 @@ namespace SkateSchool
     
         public int CodiceGara { get; set; }
         public System.DateTime Data { get; set; }
-        public string Città { get; set; }
+        public string Citta { get; set; }
         public string Categoria { get; set; }
         public string Descrizione { get; set; }
     

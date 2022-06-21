@@ -20,13 +20,14 @@ namespace SkateSchool.ViewModels
         public string CognomeIscritto { get; set; }
         public int? EtaIscritto { get; set; }
         public string TelefonoIscritto { get; set; }
+        public bool IsEtaValid { get; set; }
 
         public Tariffario[] Tariffari => db.Tariffario.ToArray();
         public Tariffario TariffarioSelected { get; set; }
 
         public bool IsIscrittoSelected => IscrittoSelected != null;
         public bool CanAddIscritto => NomeIscritto != null && CognomeIscritto != null && EtaIscritto != null && TelefonoIscritto != null;
-        public bool CanPagare => IscrittoSelected != null && TariffarioSelected != null;
+        public bool CanPagare => IscrittoSelected != null && TariffarioSelected != null && IsEtaValid;
 
         public void AddIscritto()
         {
@@ -56,6 +57,7 @@ namespace SkateSchool.ViewModels
             };
             db.Pagamento.Add(pagamento);
             db.SaveChanges();
+            TariffarioSelected = null;
         }
     }
 }

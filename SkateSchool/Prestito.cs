@@ -15,7 +15,7 @@ namespace SkateSchool
     public partial class Prestito
     {
         public int CodiceIscritto { get; set; }
-        public int CodiceAttrezzo { get; set; }
+        public int CodiceAttrezzatura { get; set; }
         public System.DateTime Data { get; set; }
         public bool Restituito { get; set; }
     

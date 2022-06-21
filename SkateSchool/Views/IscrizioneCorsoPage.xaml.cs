@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkateSchool.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,21 +16,17 @@ using System.Windows.Shapes;
 
 namespace SkateSchool.Views
 {
-    public partial class IscrizioneCorsiPage : UserControl
+    public partial class IscrizioneCorsoPage : UserControl
     {
-        public IscrizioneCorsiPage()
+        public IscrizioneCorsoPage()
         {
             InitializeComponent();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ResetVM(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new IscrizioneCorsoVM();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkateSchool.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,9 +26,9 @@ namespace SkateSchool.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ResetVM(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new IscrizioneLezionePrivataVM();
         }
     }
 }

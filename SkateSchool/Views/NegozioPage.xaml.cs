@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkateSchool.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,16 @@ namespace SkateSchool.Views
     /// <summary>
     /// Logica di interazione per Negozio.xaml
     /// </summary>
-    public partial class Negozio : UserControl
+    public partial class NegozioPage : UserControl
     {
-        public Negozio()
+        public NegozioPage()
         {
             InitializeComponent();
+        }
+
+        private void ResetVM(object sender, RoutedEventArgs e)
+        {
+            DataContext = new NegozioVM();
         }
     }
 }

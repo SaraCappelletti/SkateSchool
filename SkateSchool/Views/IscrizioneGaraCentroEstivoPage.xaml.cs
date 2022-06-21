@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkateSchool.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,21 +19,16 @@ namespace SkateSchool.Views
     /// <summary>
     /// Logica di interazione per IscrizioneGaraCentroEstivo.xaml
     /// </summary>
-    public partial class IscrizioneGaraCentroEstivo : UserControl
+    public partial class IscrizioneGaraCentroEstivoPage : UserControl
     {
-        public IscrizioneGaraCentroEstivo()
+        public IscrizioneGaraCentroEstivoPage()
         {
             InitializeComponent();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ResetVM(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            DataContext = new IscrizioneGaraCentroEstivoVM();
         }
     }
 }

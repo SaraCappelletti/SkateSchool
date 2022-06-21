@@ -6,25 +6,25 @@
         xmlns:view="clr-namespace:SkateSchool.Views"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="500" Width="800">
+        Title="SkateSchool" Height="500" Width="800">
     <TabControl>
         <TabItem Header="Pagamento">
             <view:PagamentoPage/>
         </TabItem>
         <TabItem Header="Iscrizione corsi">
-            <view:IscrizioneCorsiPage/>
+            <view:IscrizioneCorsoPage/>
         </TabItem>
         <TabItem Header="Lezione Privata">
-            <view:IscrizioneLezionePrivataPage Margin="10,0,-10,0"/>
+            <view:IscrizioneLezionePrivataPage/>
         </TabItem>
         <TabItem Header="Gare e Centri Estivi">
-            <view:IscrizioneGaraCentroEstivo/>
+            <view:IscrizioneGaraCentroEstivoPage/>
         </TabItem>
         <TabItem Header="Negozio">
-            <view:Negozio/>
+            <view:NegozioPage/>
         </TabItem>
         <TabItem Header="Prestiti">
-            <view:Prestiti/>
+            <view:PrestitoPage/>
         </TabItem>
     </TabControl>
 </Window>

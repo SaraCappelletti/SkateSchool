@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:SkateSchool.ViewModels"
              xmlns:local="clr-namespace:SkateSchool.Views" d:DataContext="{d:DesignInstance Type=vm:IscrizioneLezionePrivataVM}"
+             Loaded="ResetVM"
                 Background="White"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -17,9 +18,9 @@
         <ComboBox IsEnabled="{Binding IsDataSelected}" ItemsSource="{Binding IstruttoriDisponibili}" SelectedItem="{Binding IstruttoreSelected}" DisplayMemberPath="NomeCompleto" HorizontalAlignment="Left" Margin="363,333,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox IsEnabled="{Binding IsDataSelected}" ItemsSource="{Binding Sedi}" SelectedItem="{Binding SedeSelected}" DisplayMemberPath="NomeCompleto" HorizontalAlignment="Left" Margin="521,333,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Selezionare Sede" HorizontalAlignment="Left" Margin="521,307,0,0" VerticalAlignment="Top"/>
-        <Button IsEnabled="{Binding CanAddIscrizione}" Click="{local:MethodBinding PrenotaLezione}" Content="Iscrivimi" HorizontalAlignment="Left" Margin="662,378,0,0" VerticalAlignment="Top" Width="50"/>
-        <DatePicker SelectedDate="{Binding SelectedDate}" HorizontalAlignment="Left" Margin="28,331,0,0" VerticalAlignment="Top"/>
-        <ListView ItemsSource="{Binding Iscritti}" SelectedItem="{Binding IscrittoSelected}" Margin="28,76,104,168">
+        <Button IsEnabled="{Binding CanAddLezione}" Click="{local:MethodBinding AddLezionePrivata}" Content="Prenota" HorizontalAlignment="Left" Margin="662,378,0,0" VerticalAlignment="Top" Width="50"/>
+        <DatePicker SelectedDate="{Binding DataSelected}" HorizontalAlignment="Left" Margin="28,331,0,0" VerticalAlignment="Top"/>
+        <ListView ItemsSource="{Binding Iscritti}" SelectedItem="{Binding IscrittoSelected}" Margin="28,76,482,168">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
@@ -30,8 +31,23 @@
             </ListView.View>
         </ListView>
         <Label Content="Seleziona Iscritto" HorizontalAlignment="Left" Margin="28,50,0,0" VerticalAlignment="Top"/>
-        <ComboBox ItemsSource="{Binding OrariDisponibili}" SelectedItem="{Binding SelectOrario}" HorizontalAlignment="Left" Margin="207,333,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox ItemsSource="{Binding OrariDisponibili}" SelectedItem="{Binding OrarioSelected}" HorizontalAlignment="Left" Margin="207,333,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Selezionare Orario" HorizontalAlignment="Left" Margin="207,308,0,0" VerticalAlignment="Top"/>
+        <ListView IsEnabled="{Binding IsIscrittoSelected}" ItemsSource="{Binding LezioniIscritto}" Margin="349,76,75,168">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Data" DisplayMemberBinding="{Binding Data, StringFormat='dd/MM/yyyy hh:mm'}"/>
+                    <GridViewColumn Header="Sede" DisplayMemberBinding="{Binding Sede.NomeCompleto}"/>
+                    <GridViewColumn Header="Istruttore" DisplayMemberBinding="{Binding Istruttore.NomeCompleto}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Lezioni già prenotate dall'iscritto" HorizontalAlignment="Left" Margin="349,50,0,0" VerticalAlignment="Top" Width="258"/>
 
     </Grid>
 </UserControl>

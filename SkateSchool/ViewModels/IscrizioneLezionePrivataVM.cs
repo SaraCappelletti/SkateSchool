@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SkateSchool.ViewModels
 {
@@ -16,20 +13,24 @@ namespace SkateSchool.ViewModels
         public DateTime? DataSelected { get; set; }
 
         public TimeSpan[] OrariDisponibili { get; } = 
-            Enumerable.Range(8, 22).SelectMany(h => new[] { 0, 15, 30, 45 }.Select(m => new TimeSpan(h, m, 0))).ToArray();
+            Enumerable.Range(8, 13).SelectMany(h => new[] { 0, 15, 30, 45 }.Select(m => new TimeSpan(h, m, 0))).ToArray();
         public TimeSpan? OrarioSelected { get; set; }
 
         public DateTime? DataOraLezione => DataSelected?.Add(OrarioSelected.Value);
 
-        public Istruttore[] Istruttori => IsDataOraSelected ? 
-            db.Istruttore.Where(i => i.Lezione.Cast<ILezioneBase>().Concat(i.LezionePrivata).All(l => !l.IsDateTimeDuringLezione(DataOraLezione.Value))).ToArray() : null;
+        public bool IsDataSelected => DataSelected != null && OrarioSelected != null;
+
+        public Istruttore[] IstruttoriDisponibili => IsDataSelected ? 
+            db.Istruttore.ToArray().Where(i => i.Lezione.Cast<ILezioneBase>().Concat(i.LezionePrivata).All(l => !l.IsDateTimeDuringLezione(DataOraLezione.Value))).ToArray() : null;
         public Istruttore IstruttoreSelected { get; set; }
 
         public Sede[] Sedi => db.Sede.ToArray();
         public Sede SedeSelected { get; set; }
 
-        public bool IsDataOraSelected => DataSelected != null && OrarioSelected != null;
-        public bool CanAddLezione => IsDataOraSelected && IscrittoSelected != null && IstruttoreSelected != null && SedeSelected != null;
+        public LezionePrivata[] LezioniIscritto => IscrittoSelected?.LezioniPrivate.Where(i => i.Data >= DateTime.Now).OrderBy(l => l.Data).ToArray();
+
+        public bool IsIscrittoSelected => IscrittoSelected != null;
+        public bool CanAddLezione => IsDataSelected && IscrittoSelected != null && IstruttoreSelected != null && SedeSelected != null;
 
         public void AddLezionePrivata()
         {
@@ -42,7 +43,10 @@ namespace SkateSchool.ViewModels
             };
             db.LezionePrivata.Add(lezionePrivata);
             db.SaveChanges();
+            DataSelected = null;
+            OrarioSelected = null;
+            SedeSelected = null;
+            OnPropertyChanged(nameof(IstruttoriDisponibili), nameof(LezioniIscritto));
         }
- 
     }
 }

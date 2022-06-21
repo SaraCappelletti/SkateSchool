@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="SkateSchool.Views.IscrizioneCorsoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:SkateSchool.ViewModels" 
+      xmlns:local="clr-namespace:SkateSchool.Views"
+      Loaded="ResetVM"
+      Background="White"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:IscrizioneCorsoVM/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Button IsEnabled="{Binding CanPrenotare}" Click="{local:MethodBinding PrenotaLezione}" Content="Prenota Lezione" HorizontalAlignment="Left" Margin="607,364,0,0" VerticalAlignment="Top" Width="90"/>
+        <ComboBox ItemsSource="{Binding Sedi}" DisplayMemberPath="NomeCompleto" SelectedItem="{Binding SedeSelected}" HorizontalAlignment="Left" Margin="28,357,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox IsEnabled="{Binding IsSedeSelected}" ItemsSource="{Binding Corsi}" DisplayMemberPath="NomeCompleto" SelectedItem="{Binding CorsoSelected}" HorizontalAlignment="Left" Margin="224,362,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListView ItemsSource="{Binding Iscritti}" SelectedItem="{Binding IscrittoSelected}" Margin="28,76,482,168">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Cognome" DisplayMemberBinding="{Binding Cognome}"/>
+                    <GridViewColumn Header="Età" DisplayMemberBinding="{Binding Eta}"/>
+                    <GridViewColumn Header="Telefono" DisplayMemberBinding="{Binding Telefono}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Seleziona Sede" HorizontalAlignment="Left" Margin="28,331,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.384,0.562"/>
+        <Label Content="Seleziona Corso" HorizontalAlignment="Left" Margin="224,336,0,0" VerticalAlignment="Top"/>
+        <Label Content="Seleziona Lezione" HorizontalAlignment="Left" Margin="411,331,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsEnabled="{Binding CanSelezionareLezione}" ItemsSource="{Binding Lezioni}" DisplayMemberPath="Data" SelectedItem="{Binding LezioneSelected}" HorizontalAlignment="Left" Margin="411,362,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Numero lezioni rimaste:" HorizontalAlignment="Left" Margin="23,285,0,0" VerticalAlignment="Top"/>
+        <Label Visibility="{Binding IsLezioniEmpty, Converter={local:BoolToVisibilityConverter}}" Content="Nessuna lezione disponibile" HorizontalAlignment="Left" Margin="407,385,0,0" VerticalAlignment="Top"/>
+        <TextBlock IsEnabled="{Binding IsIscrittoSelected}" Text="{Binding LezioniRimaste}" HorizontalAlignment="Left" Margin="161,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label Content="Seleziona Iscritto" HorizontalAlignment="Left" Margin="28,50,0,0" VerticalAlignment="Top"/>
+        <ListView IsEnabled="{Binding IsIscrittoSelected}" ItemsSource="{Binding LezioniIscritto}" Margin="349,76,75,168">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Data" DisplayMemberBinding="{Binding Data}"/>
+                    <GridViewColumn Header="Istruttore" DisplayMemberBinding="{Binding Istruttore.NomeCompleto}"/>
+                    <GridViewColumn Header="Livello" DisplayMemberBinding="{Binding Corso.Livello}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Lezioni già prenotate dall'iscritto" HorizontalAlignment="Left" Margin="349,50,0,0" VerticalAlignment="Top" Width="258"/>
+
+    </Grid>
+</UserControl>

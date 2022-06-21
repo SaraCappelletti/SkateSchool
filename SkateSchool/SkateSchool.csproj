@@ -110,14 +110,15 @@
       <DependentUpon>SkateSchoolModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseVM.cs" />
-    <Compile Include="ViewModels\IscrizioneCorsiVM.cs" />
+    <Compile Include="Views\Converters.cs" />
+    <Compile Include="ViewModels\IscrizioneCorsoVM.cs" />
     <Compile Include="ViewModels\IscrizioneLezionePrivataVM.cs" />
-    <Compile Include="ViewModels\IscrizioniGareCentriEstiviVM.cs" />
+    <Compile Include="ViewModels\IscrizioneGaraCentroEstivoVM.cs" />
     <Compile Include="ViewModels\NegozioVM.cs" />
     <Compile Include="ViewModels\PagamentoVM.cs" />
     <Compile Include="ViewModels\PrestitoVM.cs" />
-    <Compile Include="Views\IscrizioneCorsiPage.xaml.cs">
-      <DependentUpon>IscrizioneCorsiPage.xaml</DependentUpon>
+    <Compile Include="Views\IscrizioneCorsoPage.xaml.cs">
+      <DependentUpon>IscrizioneCorsoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Prestito.cs">
       <DependentUpon>SkateSchoolModel.tt</DependentUpon>
@@ -149,8 +150,8 @@
     <Compile Include="Vendita.cs">
       <DependentUpon>SkateSchoolModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\IscrizioneGaraCentroEstivo.xaml.cs">
-      <DependentUpon>IscrizioneGaraCentroEstivo.xaml</DependentUpon>
+    <Compile Include="Views\IscrizioneGaraCentroEstivoPage.xaml.cs">
+      <DependentUpon>IscrizioneGaraCentroEstivoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\IscrizioneLezionePrivataPage.xaml.cs">
       <DependentUpon>IscrizioneLezionePrivataPage.xaml</DependentUpon>
@@ -162,8 +163,8 @@
     <Compile Include="Views\PagamentoPage.xaml.cs">
       <DependentUpon>PagamentoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PrestitiPage.xaml.cs">
-      <DependentUpon>PrestitiPage.xaml</DependentUpon>
+    <Compile Include="Views\PrestitoPage.xaml.cs">
+      <DependentUpon>PrestitoPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -177,11 +178,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\IscrizioneCorsiPage.xaml">
+    <Page Include="Views\IscrizioneCorsoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\IscrizioneGaraCentroEstivo.xaml">
+    <Page Include="Views\IscrizioneGaraCentroEstivoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,7 +198,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PrestitiPage.xaml">
+    <Page Include="Views\PrestitoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -33,7 +33,7 @@ namespace SkateSchool.ViewModels
             var prestito = new Prestito
             {
                 CodiceIscritto = IscrittoSelected.CodiceIscritto,
-                CodiceAttrezzo = AttrezzaturaSelected.CodiceAttrezzo,
+                CodiceAttrezzatura = AttrezzaturaSelected.CodiceAttrezzatura,
                 Data = DateTime.Now,
                 Restituito = false
             };
@@ -46,8 +46,8 @@ namespace SkateSchool.ViewModels
         {
             var prestito = AttrezzaturaSelected.Prestito.First(p => !p.Restituito && p.CodiceIscritto == IscrittoSelected.CodiceIscritto);
             prestito.Restituito = true;
-            db.Entry(prestito).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
+            AttrezzaturaSelected = null;
             OnPropertyChanged(nameof(Attrezzatura));
         }
     }

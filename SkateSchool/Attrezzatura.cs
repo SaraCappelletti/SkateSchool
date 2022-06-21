@@ -20,7 +20,7 @@ namespace SkateSchool
             this.Prestito = new HashSet<Prestito>();
         }
     
-        public int CodiceAttrezzo { get; set; }
+        public int CodiceAttrezzatura { get; set; }
         public int CodiceSede { get; set; }
         public string Descrizione { get; set; }
     

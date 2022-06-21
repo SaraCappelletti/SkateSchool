@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkateSchool.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,16 +19,16 @@ namespace SkateSchool.Views
     /// <summary>
     /// Logica di interazione per Prestiti.xaml
     /// </summary>
-    public partial class Prestiti : UserControl
+    public partial class PrestitoPage : UserControl
     {
-        public Prestiti()
+        public PrestitoPage()
         {
             InitializeComponent();
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void ResetVM(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new PrestitoVM();
         }
     }
 }

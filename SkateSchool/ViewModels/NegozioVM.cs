@@ -31,8 +31,8 @@ namespace SkateSchool.ViewModels
             db.Vendita.Add(vendita);
             OggettoSelected.Quantita -= QuantitaSelected.Value;
             db.SaveChanges();
+            OggettoSelected = null;
             OnPropertyChanged(nameof(Oggetti));
         }
-
     }
 }

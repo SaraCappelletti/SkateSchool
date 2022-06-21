@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkateSchool.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace SkateSchool.Views
         public PagamentoPage()
         {
             InitializeComponent();
+        }
+
+        private void ResetVM(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PagamentoVM();
         }
     }
 }

@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="SkateSchool.Views.IscrizioneGaraCentroEstivoPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:SkateSchool.ViewModels" 
+             xmlns:local="clr-namespace:SkateSchool.Views" d:DataContext="{d:DesignInstance Type=vm:IscrizioneGaraCentroEstivoVM}"
+             Loaded="ResetVM"
+                Background="White"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:IscrizioneGaraCentroEstivoVM/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Label Content="Descrizione" HorizontalAlignment="Left" Margin="153,287,0,0" VerticalAlignment="Top"/>
+        <Label Content="Data Inizio" HorizontalAlignment="Left" Margin="28,287,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsEnabled="{Binding IsNotGiaIscrittoCentroEstivo}" ItemsSource="{Binding CentriEstivi}" SelectedItem="{Binding CentroEstivoSelected}" HorizontalAlignment="Left" Margin="28,313,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding DataInizio, StringFormat='dd/MM/yyyy'}"/> - <Run Text="{Binding DataFine, StringFormat='dd/MM/yyyy'}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Visibility="{Binding IsCentriEmpty, Converter={local:BoolToVisibilityConverter}}" Content="Nessun centro estivo disponibile" HorizontalAlignment="Left" Margin="157,315,0,0" VerticalAlignment="Top"/>
+        <Label Content="Categoria" HorizontalAlignment="Left" Margin="153,344,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsEnabled="{Binding IsNotGiaIscrittoGara}" ItemsSource="{Binding CittaGare}" SelectedItem="{Binding CittaSelected}" HorizontalAlignment="Left" Margin="28,369,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Visibility="{Binding IsGareEmpty, Converter={local:BoolToVisibilityConverter}}" Content="Nessuna gara disponibile" HorizontalAlignment="Left" Margin="24,395,0,0" VerticalAlignment="Top"/>
+        <Label Content="Città" HorizontalAlignment="Left" Margin="28,344,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsEnabled="{Binding IsCittaSelected}" ItemsSource="{Binding CategoriaGare}" SelectedItem="{Binding CategoriaSelected}" HorizontalAlignment="Left" Margin="153,369,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button IsEnabled="{Binding CanAddIscrittoCentroEstivo}" Click="{local:MethodBinding AddIscrittoCentroEstivo}" Content="Iscrivimi al Centro Estivo" HorizontalAlignment="Left" Margin="457,315,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button IsEnabled="{Binding CanAddIscrittoGara}" Click="{local:MethodBinding AddIscrittoGara}" Content="Iscrvimi alla Gara" HorizontalAlignment="Left" Margin="457,369,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListView ItemsSource="{Binding Iscritti}" SelectedItem="{Binding IscrittoSelected}" Margin="28,76,482,168">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Cognome" DisplayMemberBinding="{Binding Cognome}"/>
+                    <GridViewColumn Header="Età" DisplayMemberBinding="{Binding Eta}"/>
+                    <GridViewColumn Header="Telefono" DisplayMemberBinding="{Binding Telefono}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Seleziona Iscritto" HorizontalAlignment="Left" Margin="28,50,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsEnabled="{Binding IsCategoriaSelected}" ItemsSource="{Binding Gare}" DisplayMemberPath="Data" SelectedItem="{Binding GaraSelected}" HorizontalAlignment="Left" Margin="279,368,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Data" HorizontalAlignment="Left" Margin="279,343,0,0" VerticalAlignment="Top"/>
+        <TextBlock IsEnabled="{Binding CanAddIscrittoCentroEstivo}" HorizontalAlignment="Left" Margin="159,313,0,0" TextWrapping="Wrap" Text="{Binding CentroEstivoSelected.Descrizione}" VerticalAlignment="Top"/>
+        <ListView IsEnabled="{Binding IsIscrittoSelected}" ItemsSource="{Binding CentriEstiviIscritto}" Margin="349,76,75,286">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Data Inizio" DisplayMemberBinding="{Binding DataInizio, StringFormat='dd/MM/yyyy'}"/>
+                    <GridViewColumn Header="Data Fine" DisplayMemberBinding="{Binding DataFine, StringFormat='dd/MM/yyyy'}"/>
+                    <GridViewColumn Header="Descrizione" DisplayMemberBinding="{Binding Descrizione}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Centri Estivi a cui parteciperà l'iscritto" HorizontalAlignment="Left" Margin="349,50,0,0" VerticalAlignment="Top" Width="258"/>
+        <ListView IsEnabled="{Binding IsIscrittoSelected}" ItemsSource="{Binding GareIscritto}" Margin="349,193,75,169">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Data" DisplayMemberBinding="{Binding Data}"/>
+                    <GridViewColumn Header="Città" DisplayMemberBinding="{Binding Citta}"/>
+                    <GridViewColumn Header="Categoria" DisplayMemberBinding="{Binding Categoria}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Gare a cui parteciperà l'iscritto" HorizontalAlignment="Left" Margin="349,167,0,0" VerticalAlignment="Top" Width="258"/>
+
+    </Grid>
+</UserControl>

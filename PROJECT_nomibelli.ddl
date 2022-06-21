@@ -23,10 +23,10 @@ use SkateSchool;
 -- _____________ 
 
 create table Attrezzatura (
-     CodiceAttrezzo int not null identity,
+     CodiceAttrezzatura int not null identity,
      CodiceSede int not null,
      Descrizione varchar(200) not null,
-     constraint ID_ATTREZZATURA_ID primary key (CodiceAttrezzo));
+     constraint ID_ATTREZZATURA_ID primary key (CodiceAttrezzatura));
 
 create table CentroEstivo (
      CodiceCentroEstivo int not null identity,
@@ -44,8 +44,8 @@ create table Corso (
 
 create table Gara (
      CodiceGara int not null identity,
-     Data date not null,
-     Città varchar(30) not null,
+     Data datetime2 not null,
+     Citta varchar(30) not null,
      Categoria varchar(30) not null,
      Descrizione varchar(200) not null,
      constraint ID_GARA_ID primary key (CodiceGara));
@@ -92,13 +92,13 @@ create table Lezione (
      CodiceIstruttore int not null,
      CodiceCorso int not null,
      MassimoPartecipanti int not null,
-     Data date not null,
+     Data datetime2 not null,
      constraint ID_LEZIONE_ID primary key (CodiceLezione),
      constraint SID_LEZIONE_ID unique (CodiceIstruttore, CodiceCorso));
 
 create table LezionePrivata (
      CodiceIstruttore int not null,
-     Data date not null,
+     Data datetime2 not null,
      CodiceSede int not null,
      CodiceIscritto int not null,
      constraint ID_LEZIONE_PRIVATA_ID primary key (CodiceIstruttore, Data));
@@ -115,17 +115,17 @@ create table Oggetto (
 create table Pagamento (
      CodicePagamento int not null identity,
      NumeroLezioniRimaste int not null,
-     Data date not null,
+     Data datetime2 not null,
      CodiceIscritto int not null,
      CodiceTariffario int not null,
      constraint ID_PAGAMENTO_ID primary key (CodicePagamento));
 
 create table Prestito (
      CodiceIscritto int not null,
-     CodiceAttrezzo int not null,
-     Data date not null,
+     CodiceAttrezzatura int not null,
+     Data datetime2 not null,
      Restituito bit not null,
-     constraint ID_PRESTITO_ID primary key (CodiceAttrezzo, CodiceIscritto, Data));
+     constraint ID_PRESTITO_ID primary key (CodiceAttrezzatura, CodiceIscritto, Data));
 
 create table Sede (
      CodiceSede int not null identity,
@@ -154,7 +154,7 @@ create table Vendita (
      CodiceVendita int not null identity,
      CodiceOggetto int not null,
      Quantita int not null,
-     Data date not null,
+     Data datetime2 not null,
      constraint ID_VENDITA_ID primary key (CodiceVendita));
 
 
@@ -238,7 +238,7 @@ alter table Pagamento add constraint FKcomprende_FK
      references Tariffario;
 
 alter table Prestito add constraint FKprestito
-     foreign key (CodiceAttrezzo)
+     foreign key (CodiceAttrezzatura)
      references Attrezzatura;
 
 alter table Prestito add constraint FKprende_FK
@@ -262,7 +262,7 @@ alter table Vendita add constraint FKR
 -- _____________ 
 
 create unique index ID_ATTREZZATURA_IND
-     on Attrezzatura (CodiceAttrezzo);
+     on Attrezzatura (CodiceAttrezzatura);
 
 create index FKpossiede_IND
      on Attrezzatura (CodiceSede);
@@ -343,7 +343,7 @@ create index FKcomprende_IND
      on Pagamento (CodiceTariffario);
 
 create unique index ID_PRESTITO_IND
-     on Prestito (CodiceAttrezzo, CodiceIscritto, Data);
+     on Prestito (CodiceAttrezzatura, CodiceIscritto, Data);
 
 create index FKprende_IND
      on Prestito (CodiceIscritto);

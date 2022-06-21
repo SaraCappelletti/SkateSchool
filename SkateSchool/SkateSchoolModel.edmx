@@ -7,9 +7,9 @@
     <Schema Namespace="SkateSchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Attrezzatura">
           <Key>
-            <PropertyRef Name="CodiceAttrezzo" />
+            <PropertyRef Name="CodiceAttrezzatura" />
           </Key>
-          <Property Name="CodiceAttrezzo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodiceAttrezzatura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodiceSede" Type="int" Nullable="false" />
           <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
@@ -37,7 +37,7 @@
           </Key>
           <Property Name="CodiceGara" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Data" Type="date" Nullable="false" />
-          <Property Name="Città" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Citta" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Categoria" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
@@ -138,11 +138,11 @@
         <EntityType Name="Prestito">
           <Key>
             <PropertyRef Name="CodiceIscritto" />
-            <PropertyRef Name="CodiceAttrezzo" />
+            <PropertyRef Name="CodiceAttrezzatura" />
             <PropertyRef Name="Data" />
           </Key>
           <Property Name="CodiceIscritto" Type="int" Nullable="false" />
-          <Property Name="CodiceAttrezzo" Type="int" Nullable="false" />
+          <Property Name="CodiceAttrezzatura" Type="int" Nullable="false" />
           <Property Name="Data" Type="date" Nullable="false" />
           <Property Name="Restituito" Type="bit" Nullable="false" />
         </EntityType>
@@ -408,10 +408,10 @@
           <End Role="Prestito" Type="Self.Prestito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Attrezzatura">
-              <PropertyRef Name="CodiceAttrezzo" />
+              <PropertyRef Name="CodiceAttrezzatura" />
             </Principal>
             <Dependent Role="Prestito">
-              <PropertyRef Name="CodiceAttrezzo" />
+              <PropertyRef Name="CodiceAttrezzatura" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -692,9 +692,9 @@
         </EntityContainer>
         <EntityType Name="Attrezzatura">
           <Key>
-            <PropertyRef Name="CodiceAttrezzo" />
+            <PropertyRef Name="CodiceAttrezzatura" />
           </Key>
-          <Property Name="CodiceAttrezzo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodiceAttrezzatura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodiceSede" Type="Int32" Nullable="false" />
           <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKpossiede_FK" FromRole="Attrezzatura" ToRole="Sede" />
@@ -728,7 +728,7 @@
           </Key>
           <Property Name="CodiceGara" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Città" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Citta" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.IscrizioneGara" FromRole="Gara" ToRole="Iscritto" />
@@ -819,11 +819,11 @@
         <EntityType Name="Prestito">
           <Key>
             <PropertyRef Name="CodiceIscritto" />
-            <PropertyRef Name="CodiceAttrezzo" />
+            <PropertyRef Name="CodiceAttrezzatura" />
             <PropertyRef Name="Data" />
           </Key>
           <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
-          <Property Name="CodiceAttrezzo" Type="Int32" Nullable="false" />
+          <Property Name="CodiceAttrezzatura" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Restituito" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Attrezzatura" Relationship="SkateSchoolModel.FKprestito" FromRole="Prestito" ToRole="Attrezzatura" />
@@ -887,10 +887,10 @@
           <End Type="SkateSchoolModel.Prestito" Role="Prestito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Attrezzatura">
-              <PropertyRef Name="CodiceAttrezzo" />
+              <PropertyRef Name="CodiceAttrezzatura" />
             </Principal>
             <Dependent Role="Prestito">
-              <PropertyRef Name="CodiceAttrezzo" />
+              <PropertyRef Name="CodiceAttrezzatura" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1069,7 +1069,7 @@
               <MappingFragment StoreEntitySet="Attrezzatura">
                 <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
                 <ScalarProperty Name="CodiceSede" ColumnName="CodiceSede" />
-                <ScalarProperty Name="CodiceAttrezzo" ColumnName="CodiceAttrezzo" />
+                <ScalarProperty Name="CodiceAttrezzatura" ColumnName="CodiceAttrezzatura" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1098,7 +1098,7 @@
               <MappingFragment StoreEntitySet="Gara">
                 <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
                 <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="Città" ColumnName="Città" />
+                <ScalarProperty Name="Citta" ColumnName="Citta" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="CodiceGara" ColumnName="CodiceGara" />
               </MappingFragment>
@@ -1176,7 +1176,7 @@
               <MappingFragment StoreEntitySet="Prestito">
                 <ScalarProperty Name="Restituito" ColumnName="Restituito" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="CodiceAttrezzo" ColumnName="CodiceAttrezzo" />
+                <ScalarProperty Name="CodiceAttrezzatura" ColumnName="CodiceAttrezzatura" />
                 <ScalarProperty Name="CodiceIscritto" ColumnName="CodiceIscritto" />
               </MappingFragment>
             </EntityTypeMapping>

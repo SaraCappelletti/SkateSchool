@@ -11,6 +11,6 @@ namespace SkateSchool
     public static class LezioneBaseExtensions
     {
         public static bool IsDateTimeDuringLezione(this ILezioneBase lezione, DateTime dateTime) =>
-            dateTime >= lezione.Data && dateTime <= lezione.Data.Add(TimeSpan.FromHours(1));
+            dateTime >= lezione.Data.Subtract(TimeSpan.FromHours(1)) && dateTime <= lezione.Data.Add(TimeSpan.FromHours(1));
     }
 }

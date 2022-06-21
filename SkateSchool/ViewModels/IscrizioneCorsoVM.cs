@@ -1,9 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace SkateSchool.ViewModels
 {
-    internal class IscrizioneCorsiVM : BaseVM
+    internal class IscrizioneCorsoVM : BaseVM
     {
         SkateSchoolEntities db = new SkateSchoolEntities();
 
@@ -24,15 +25,18 @@ namespace SkateSchool.ViewModels
         public Corso[] Corsi => SedeSelected?.Corsi.ToArray();
         public Corso CorsoSelected { get; set; }
 
-        public Lezione[] Lezioni => CorsoSelected?.Lezioni.ToArray();
+        public Lezione[] Lezioni => CorsoSelected?.Lezioni.Where(l => l.Data >= DateTime.Now && !l.Iscritto.Contains(IscrittoSelected) && l.Iscritto.Count < l.MassimoPartecipanti).ToArray();
         public Lezione LezioneSelected { get; set; }
+        public Lezione[] LezioniIscritto => IscrittoSelected?.Lezioni.Where(i => i.Data > DateTime.Now).OrderBy(l => l.Data).ToArray();
 
         public int? LezioniRimaste => IscrittoSelected?.Pagamento.Where(p => !p.Tariffario.Privata).Sum(p => p.NumeroLezioniRimaste);
 
         public bool IsSedeSelected => SedeSelected != null;
         public bool IsCorsoSelected => CorsoSelected != null;
         public bool IsIscrittoSelected => IscrittoSelected != null;
-        public bool CanPrenotare => IscrittoSelected != null && LezioneSelected != null && LezioniRimaste != 0;
+        public bool IsLezioniEmpty => Lezioni != null && Lezioni.Length == 0;
+        public bool CanSelezionareLezione => IsIscrittoSelected && IsCorsoSelected && Lezioni.Length > 0;
+        public bool CanPrenotare => LezioneSelected != null && LezioniRimaste != 0;
 
         public void PrenotaLezione()
         {
@@ -40,8 +44,8 @@ namespace SkateSchool.ViewModels
             var pagamento = IscrittoSelected.Pagamento.OrderBy(p => p.Data).First(p => p.NumeroLezioniRimaste > 0 && !p.Tariffario.Privata);
             pagamento.NumeroLezioniRimaste--;
             db.SaveChanges();
-            OnPropertyChanged(nameof(LezioniRimaste));
+            SedeSelected = null;
+            OnPropertyChanged(nameof(LezioniRimaste), nameof(LezioniIscritto));
         }
-
     }
 }
