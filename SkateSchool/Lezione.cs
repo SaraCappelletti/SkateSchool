@@ -25,6 +25,7 @@ namespace SkateSchool
         public int CodiceCorso { get; set; }
         public int MassimoPartecipanti { get; set; }
         public System.DateTime Data { get; set; }
+        public int Durata { get; set; }
     
         public virtual Corso Corso { get; set; }
         public virtual Istruttore Istruttore { get; set; }

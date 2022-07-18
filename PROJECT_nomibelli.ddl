@@ -93,12 +93,14 @@ create table Lezione (
      CodiceCorso int not null,
      MassimoPartecipanti int not null,
      Data datetime2 not null,
+     Durata int not null,
      constraint ID_LEZIONE_ID primary key (CodiceLezione),
      constraint SID_LEZIONE_ID unique (CodiceIstruttore, CodiceCorso));
 
 create table LezionePrivata (
      CodiceIstruttore int not null,
      Data datetime2 not null,
+     Durata int not null,
      CodiceSede int not null,
      CodiceIscritto int not null,
      constraint ID_LEZIONE_PRIVATA_ID primary key (CodiceIstruttore, Data));

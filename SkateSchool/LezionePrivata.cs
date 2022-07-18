@@ -18,6 +18,7 @@ namespace SkateSchool
         public System.DateTime Data { get; set; }
         public int CodiceSede { get; set; }
         public int CodiceIscritto { get; set; }
+        public int Durata { get; set; }
     
         public virtual Iscritto Iscritto { get; set; }
         public virtual Istruttore Istruttore { get; set; }

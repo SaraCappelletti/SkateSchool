@@ -36,7 +36,7 @@
             <PropertyRef Name="CodiceGara" />
           </Key>
           <Property Name="CodiceGara" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Citta" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Categoria" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
@@ -102,7 +102,8 @@
           <Property Name="CodiceIstruttore" Type="int" Nullable="false" />
           <Property Name="CodiceCorso" Type="int" Nullable="false" />
           <Property Name="MassimoPartecipanti" Type="int" Nullable="false" />
-          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Durata" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LezionePrivata">
           <Key>
@@ -110,7 +111,8 @@
             <PropertyRef Name="Data" />
           </Key>
           <Property Name="CodiceIstruttore" Type="int" Nullable="false" />
-          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Durata" Type="int" Nullable="false" />
           <Property Name="CodiceSede" Type="int" Nullable="false" />
           <Property Name="CodiceIscritto" Type="int" Nullable="false" />
         </EntityType>
@@ -131,7 +133,7 @@
           </Key>
           <Property Name="CodicePagamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumeroLezioniRimaste" Type="int" Nullable="false" />
-          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="CodiceIscritto" Type="int" Nullable="false" />
           <Property Name="CodiceTariffario" Type="int" Nullable="false" />
         </EntityType>
@@ -143,7 +145,7 @@
           </Key>
           <Property Name="CodiceIscritto" Type="int" Nullable="false" />
           <Property Name="CodiceAttrezzatura" Type="int" Nullable="false" />
-          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Restituito" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Sede">
@@ -185,7 +187,7 @@
           <Property Name="CodiceVendita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodiceOggetto" Type="int" Nullable="false" />
           <Property Name="Quantita" Type="int" Nullable="false" />
-          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <Association Name="FKappartenenza_FK">
           <End Role="TipologiaOggetto" Type="Self.TipologiaOggetto" Multiplicity="1" />
@@ -727,7 +729,7 @@
             <PropertyRef Name="CodiceGara" />
           </Key>
           <Property Name="CodiceGara" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Citta" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Descrizione" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -772,10 +774,11 @@
           <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" />
           <Property Name="CodiceCorso" Type="Int32" Nullable="false" />
           <Property Name="MassimoPartecipanti" Type="Int32" Nullable="false" />
-          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="Corso" Relationship="SkateSchoolModel.FKappartiene_FK" FromRole="Lezione" ToRole="Corso" />
           <NavigationProperty Name="Istruttore" Relationship="SkateSchoolModel.FKgestione" FromRole="Lezione" ToRole="Istruttore" />
           <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.Iscrizione" FromRole="Lezione" ToRole="Iscritto" />
+          <Property Name="Durata" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="LezionePrivata">
           <Key>
@@ -783,12 +786,13 @@
             <PropertyRef Name="Data" />
           </Key>
           <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" />
-          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="CodiceSede" Type="Int32" Nullable="false" />
           <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.FKsostiene_FK" FromRole="LezionePrivata" ToRole="Iscritto" />
           <NavigationProperty Name="Istruttore" Relationship="SkateSchoolModel.FKpresiede" FromRole="LezionePrivata" ToRole="Istruttore" />
           <NavigationProperty Name="Sede" Relationship="SkateSchoolModel.FKluogo_FK" FromRole="LezionePrivata" ToRole="Sede" />
+          <Property Name="Durata" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Oggetto">
           <Key>
@@ -810,7 +814,7 @@
           </Key>
           <Property Name="CodicePagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NumeroLezioniRimaste" Type="Int32" Nullable="false" />
-          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
           <Property Name="CodiceTariffario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.FKeffettuato_FK" FromRole="Pagamento" ToRole="Iscritto" />
@@ -824,7 +828,7 @@
           </Key>
           <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
           <Property Name="CodiceAttrezzatura" Type="Int32" Nullable="false" />
-          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Restituito" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Attrezzatura" Relationship="SkateSchoolModel.FKprestito" FromRole="Prestito" ToRole="Attrezzatura" />
           <NavigationProperty Name="Iscritto" Relationship="SkateSchoolModel.FKprende_FK" FromRole="Prestito" ToRole="Iscritto" />
@@ -867,7 +871,7 @@
           <Property Name="CodiceVendita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodiceOggetto" Type="Int32" Nullable="false" />
           <Property Name="Quantita" Type="Int32" Nullable="false" />
-          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="Oggetto" Relationship="SkateSchoolModel.FKR" FromRole="Vendita" ToRole="Oggetto" />
         </EntityType>
         <Association Name="FKpossiede_FK">
@@ -1130,6 +1134,7 @@
           <EntitySetMapping Name="Lezione">
             <EntityTypeMapping TypeName="SkateSchoolModel.Lezione">
               <MappingFragment StoreEntitySet="Lezione">
+                <ScalarProperty Name="Durata" ColumnName="Durata" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="MassimoPartecipanti" ColumnName="MassimoPartecipanti" />
                 <ScalarProperty Name="CodiceCorso" ColumnName="CodiceCorso" />
@@ -1141,6 +1146,7 @@
           <EntitySetMapping Name="LezionePrivata">
             <EntityTypeMapping TypeName="SkateSchoolModel.LezionePrivata">
               <MappingFragment StoreEntitySet="LezionePrivata">
+                <ScalarProperty Name="Durata" ColumnName="Durata" />
                 <ScalarProperty Name="CodiceIscritto" ColumnName="CodiceIscritto" />
                 <ScalarProperty Name="CodiceSede" ColumnName="CodiceSede" />
                 <ScalarProperty Name="Data" ColumnName="Data" />

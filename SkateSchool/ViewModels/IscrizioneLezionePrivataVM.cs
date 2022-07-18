@@ -39,7 +39,8 @@ namespace SkateSchool.ViewModels
                 CodiceIstruttore = IstruttoreSelected.CodiceIstruttore,
                 CodiceSede = SedeSelected.CodiceSede,
                 CodiceIscritto = IscrittoSelected.CodiceIscritto,
-                Data = DataOraLezione.Value
+                Data = DataOraLezione.Value,
+                Durata = 60
             };
             db.LezionePrivata.Add(lezionePrivata);
             db.SaveChanges();
