@@ -8,6 +8,8 @@ INSERT INTO [dbo].[Sede] ([CodiceSede], [Citta], [SkatePark]) VALUES (1, N'Cesen
 INSERT INTO [dbo].[Sede] ([CodiceSede], [Citta], [SkatePark]) VALUES (2, N'Cesena', N'101')
 INSERT INTO [dbo].[Sede] ([CodiceSede], [Citta], [SkatePark]) VALUES (3, N'Ravenna', N'Ponte Nuovo')
 INSERT INTO [dbo].[Sede] ([CodiceSede], [Citta], [SkatePark]) VALUES (4, N'Cesenatico', N'Hotel Lux')
+INSERT INTO [dbo].[Sede] ([CodiceSede], [Citta], [SkatePark]) VALUES (5, N'San Mauro Pascoli', N'Skatepark')
+INSERT INTO [dbo].[Sede] ([CodiceSede], [Citta], [SkatePark]) VALUES (6, N'Forlì', N'Paranoid')
 SET IDENTITY_INSERT [dbo].[Sede] OFF
 SET IDENTITY_INSERT [dbo].[Corso] ON
 INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]) VALUES (1, N'Bambini', N'Base', 1)
@@ -15,6 +17,9 @@ INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]
 INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]) VALUES (3, N'Bambini', N'Avanzato', 2)
 INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]) VALUES (4, N'Bambini', N'Base', 3)
 INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]) VALUES (5, N'Bambini', N'Avanzato', 4)
+INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]) VALUES (6, N'Adulti', N'Team', 3)
+INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]) VALUES (7, N'Bambini', N'Cooperativo', 5)
+INSERT INTO [dbo].[Corso] ([CodiceCorso], [Descrizione], [Livello], [CodiceSede]) VALUES (8, N'Bambini', N'Baby', 6)
 SET IDENTITY_INSERT [dbo].[Corso] OFF
 SET IDENTITY_INSERT [dbo].[Gara] ON
 INSERT INTO [dbo].[Gara] ([CodiceGara], [Data], [Citta], [Categoria], [Descrizione]) VALUES (1, N'2022-08-17', N'San Mauro Pascoli', N'Baby', N'Fino agli 8 anni')
@@ -29,19 +34,31 @@ INSERT INTO [dbo].[Iscritto] ([CodiceIscritto], [Nome], [Cognome], [Eta], [Telef
 INSERT INTO [dbo].[Iscritto] ([CodiceIscritto], [Nome], [Cognome], [Eta], [Telefono], [Livello]) VALUES (3, N'Claudia', N'Castellucci', 30, N'3378649528', N'adulti avanzato')
 INSERT INTO [dbo].[Iscritto] ([CodiceIscritto], [Nome], [Cognome], [Eta], [Telefono], [Livello]) VALUES (4, N'Giulio ', N'Giorgetti', 10, N'3367953920', N'avanzato')
 INSERT INTO [dbo].[Iscritto] ([CodiceIscritto], [Nome], [Cognome], [Eta], [Telefono], [Livello]) VALUES (5, N'Alfredo', N'Furini', 13, N'3375893377', N'avanzato')
+INSERT INTO [dbo].[Iscritto] ([CodiceIscritto], [Nome], [Cognome], [Eta], [Telefono], [Livello]) VALUES (6, N'Giada', N'Nanni', 8, N'3356784962', N'baby')
 SET IDENTITY_INSERT [dbo].[Iscritto] OFF
 SET IDENTITY_INSERT [dbo].[Istruttore] ON
-INSERT INTO [dbo].[Istruttore] ([CodiceIstruttore], [Nome], [Cognome], [Eta], [Telefono]) VALUES (1, N'Rachele', N'Margutti', 20, N'3358941218')
+INSERT INTO [dbo].[Istruttore] ([CodiceIstruttore], [Nome], [Cognome], [Eta], [Telefono]) VALUES (1, N'Rachele', N'Margutti', 21, N'3358941218')
 INSERT INTO [dbo].[Istruttore] ([CodiceIstruttore], [Nome], [Cognome], [Eta], [Telefono]) VALUES (2, N'Enrico', N'Daltri', 28, N'3386037759')
 INSERT INTO [dbo].[Istruttore] ([CodiceIstruttore], [Nome], [Cognome], [Eta], [Telefono]) VALUES (3, N'Alessandro', N'Pistocchi', 29, N'3369375509')
 INSERT INTO [dbo].[Istruttore] ([CodiceIstruttore], [Nome], [Cognome], [Eta], [Telefono]) VALUES (4, N'Giorgia', N'Visani', 26, N'3386759265')
+INSERT INTO [dbo].[Istruttore] ([CodiceIstruttore], [Nome], [Cognome], [Eta], [Telefono]) VALUES (5, N'Matteo', N'Ricci', 26, N'3357860854')
+INSERT INTO [dbo].[Istruttore] ([CodiceIstruttore], [Nome], [Cognome], [Eta], [Telefono]) VALUES (6, N'Marco', N'Casadei', 24, N'3347861239')
 SET IDENTITY_INSERT [dbo].[Istruttore] OFF
 SET IDENTITY_INSERT [dbo].[Lezione] ON
 INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (1, 1, 1, 6, N'2022-08-13 09:00:00', 60)
-INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (2, 1, 2, 6, N'2022-08-13 10:00:00', 60)
-INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (3, 2, 3, 6, N'2022-08-14 09:30:00', 60)
-INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (4, 4, 4, 6, N'2022-08-15 18:00:00', 60)
-INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (5, 2, 5, 6, N'2022-08-13 16:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (2, 1, 1, 6, N'2022-08-20 09:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (3, 1, 2, 6, N'2022-08-13 11:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (4, 1, 2, 6, N'2022-08-20 11:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (5, 2, 3, 6, N'2022-08-14 09:30:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (6, 2, 3, 6, N'2022-08-21 09:30:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (7, 4, 4, 6, N'2022-08-15 18:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (8, 4, 4, 6, N'2022-08-22 18:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (9, 2, 5, 6, N'2022-08-13 16:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (10, 2, 5, 6, N'2022-08-20 16:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (11, 5, 7, 6, N'2022-08-16 11:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (12, 5, 7, 6, N'2022-08-23 11:00:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (13, 6, 8, 6, N'2022-08-17 17:30:00', 60)
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data], [Durata]) VALUES (14, 6, 8, 6, N'2022-08-24 17:30:00', 60)
 SET IDENTITY_INSERT [dbo].[Lezione] OFF
 INSERT INTO [dbo].[LezionePrivata] ([CodiceIstruttore], [Data], [Durata], [CodiceSede], [CodiceIscritto]) VALUES (1, N'2022-08-14 10:00:00', 60, 1, 1)
 INSERT INTO [dbo].[LezionePrivata] ([CodiceIstruttore], [Data], [Durata], [CodiceSede], [CodiceIscritto]) VALUES (1, N'2022-08-15 11:00:00', 60, 2, 5)
@@ -57,6 +74,11 @@ SET IDENTITY_INSERT [dbo].[Oggetto] ON
 INSERT INTO [dbo].[Oggetto] ([CodiceOggetto], [Quantita], [Prezzo], [Descrizione], [CodiceSede], [CodiceTipo]) VALUES (1, 3, 15, N'Maglia SkateSchool', 2, 1)
 INSERT INTO [dbo].[Oggetto] ([CodiceOggetto], [Quantita], [Prezzo], [Descrizione], [CodiceSede], [CodiceTipo]) VALUES (2, 5, 50, N'Skate why not', 2, 2)
 INSERT INTO [dbo].[Oggetto] ([CodiceOggetto], [Quantita], [Prezzo], [Descrizione], [CodiceSede], [CodiceTipo]) VALUES (3, 2, 30, N'Pantaloni Vans', 3, 3)
+INSERT INTO [dbo].[Oggetto] ([CodiceOggetto], [Quantita], [Prezzo], [Descrizione], [CodiceSede], [CodiceTipo]) VALUES (4, 3, 15, N'Maglia SkateSchool', 1, 1)
+INSERT INTO [dbo].[Oggetto] ([CodiceOggetto], [Quantita], [Prezzo], [Descrizione], [CodiceSede], [CodiceTipo]) VALUES (5, 5, 50, N'Skate why not', 1, 2)
+INSERT INTO [dbo].[Oggetto] ([CodiceOggetto], [Quantita], [Prezzo], [Descrizione], [CodiceSede], [CodiceTipo]) VALUES (6, 2, 30, N'Pantaloni Vans', 4, 3)
+INSERT INTO [dbo].[Oggetto] ([CodiceOggetto], [Quantita], [Prezzo], [Descrizione], [CodiceSede], [CodiceTipo]) VALUES (7, 5, 30, N'Pantaloni Vans', 5, 3)
+INSERT INTO [dbo].[Oggetto] ([CodiceOggetto], [Quantita], [Prezzo], [Descrizione], [CodiceSede], [CodiceTipo]) VALUES (8, 1, 50, N'Skate why not', 5, 2)
 SET IDENTITY_INSERT [dbo].[Oggetto] OFF
 SET IDENTITY_INSERT [dbo].[Vendita] ON
 INSERT INTO [dbo].[Vendita] ([CodiceVendita], [CodiceOggetto], [Quantita], [Data]) VALUES (1, 1, 1, N'2022-06-13')
@@ -99,10 +121,13 @@ INSERT INTO [dbo].[Insegnamento] ([CodiceIstruttore], [CodiceSede]) VALUES (2, 4
 INSERT INTO [dbo].[Insegnamento] ([CodiceIstruttore], [CodiceSede]) VALUES (3, 1)
 INSERT INTO [dbo].[Insegnamento] ([CodiceIstruttore], [CodiceSede]) VALUES (3, 2)
 INSERT INTO [dbo].[Insegnamento] ([CodiceIstruttore], [CodiceSede]) VALUES (4, 3)
+INSERT INTO [dbo].[Insegnamento] ([CodiceIstruttore], [CodiceSede]) VALUES (5, 5)
+INSERT INTO [dbo].[Insegnamento] ([CodiceIstruttore], [CodiceSede]) VALUES (6, 6)
 
 INSERT INTO [dbo].[Iscrizione] ([CodiceIscritto], [CodiceLezione]) VALUES (1, 2)
 INSERT INTO [dbo].[Iscrizione] ([CodiceIscritto], [CodiceLezione]) VALUES (2, 3)
 INSERT INTO [dbo].[Iscrizione] ([CodiceIscritto], [CodiceLezione]) VALUES (4, 5)
+INSERT INTO [dbo].[Iscrizione] ([CodiceIscritto], [CodiceLezione]) VALUES (6, 8)
 
 INSERT INTO [dbo].[IscrizioneCentroEstivo] ([CodiceCentroEstivo], [CodiceIscritto]) VALUES (1, 5)
 INSERT INTO [dbo].[IscrizioneCentroEstivo] ([CodiceCentroEstivo], [CodiceIscritto]) VALUES (1, 2)

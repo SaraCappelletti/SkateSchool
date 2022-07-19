@@ -13,7 +13,7 @@
         <vm:PagamentoVM/>
     </UserControl.DataContext>
     <Grid>
-        <ComboBox SelectedItem="{Binding TariffarioSelected}" ItemsSource="{Binding Tariffari}" DisplayMemberPath="NomeCompleto" HorizontalAlignment="Left" Margin="494,382,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox SelectedItem="{Binding TariffarioSelected}" ItemsSource="{Binding Tariffari}" DisplayMemberPath="NomeCompleto" HorizontalAlignment="Left" Margin="494,382,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Seleziona Tariffario" HorizontalAlignment="Left" Margin="494,351,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="Sono già iscritto" IsChecked="{Binding IsIscritto}" HorizontalAlignment="Left" Margin="28,62,0,0" VerticalAlignment="Top"/>
         <Grid IsEnabled="{Binding IsNotIscritto}" Height="53" VerticalAlignment="Top" Margin="175,50,0,0" HorizontalAlignment="Left" Width="545">

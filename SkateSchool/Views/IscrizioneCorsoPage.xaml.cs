@@ -28,5 +28,9 @@ namespace SkateSchool.Views
             DataContext = new IscrizioneCorsoVM();
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

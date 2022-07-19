@@ -15,8 +15,8 @@
 
     <Grid>
         <Button IsEnabled="{Binding CanPrenotare}" Click="{local:MethodBinding PrenotaLezione}" Content="Prenota Lezione" HorizontalAlignment="Left" Margin="607,364,0,0" VerticalAlignment="Top" Width="90"/>
-        <ComboBox ItemsSource="{Binding Sedi}" DisplayMemberPath="NomeCompleto" SelectedItem="{Binding SedeSelected}" HorizontalAlignment="Left" Margin="28,357,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox IsEnabled="{Binding IsSedeSelected}" ItemsSource="{Binding Corsi}" DisplayMemberPath="NomeCompleto" SelectedItem="{Binding CorsoSelected}" HorizontalAlignment="Left" Margin="224,362,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox ItemsSource="{Binding Sedi}" DisplayMemberPath="NomeCompleto" SelectedItem="{Binding SedeSelected}" HorizontalAlignment="Left" Margin="28,357,0,0" VerticalAlignment="Top" Width="145"/>
+        <ComboBox IsEnabled="{Binding IsSedeSelected}" ItemsSource="{Binding Corsi}" DisplayMemberPath="NomeCompleto" SelectedItem="{Binding CorsoSelected}" HorizontalAlignment="Left" Margin="224,358,0,0" VerticalAlignment="Top" Width="140"/>
         <ListView ItemsSource="{Binding Iscritti}" SelectedItem="{Binding IscrittoSelected}" Margin="28,76,482,168">
             <ListView.View>
                 <GridView>
@@ -28,9 +28,9 @@
             </ListView.View>
         </ListView>
         <Label Content="Seleziona Sede" HorizontalAlignment="Left" Margin="28,331,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.384,0.562"/>
-        <Label Content="Seleziona Corso" HorizontalAlignment="Left" Margin="224,336,0,0" VerticalAlignment="Top"/>
-        <Label Content="Seleziona Lezione" HorizontalAlignment="Left" Margin="411,331,0,0" VerticalAlignment="Top"/>
-        <ComboBox IsEnabled="{Binding CanSelezionareLezione}" ItemsSource="{Binding Lezioni}" DisplayMemberPath="Data" SelectedItem="{Binding LezioneSelected}" HorizontalAlignment="Left" Margin="411,362,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Seleziona Corso" HorizontalAlignment="Left" Margin="224,332,0,0" VerticalAlignment="Top"/>
+        <Label Content="Seleziona Lezione" HorizontalAlignment="Left" Margin="411,327,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsEnabled="{Binding CanSelezionareLezione}" ItemsSource="{Binding Lezioni}" DisplayMemberPath="Data" SelectedItem="{Binding LezioneSelected}" HorizontalAlignment="Left" Margin="411,358,0,0" VerticalAlignment="Top" Width="145"/>
         <Label Content="Numero lezioni rimaste:" HorizontalAlignment="Left" Margin="23,285,0,0" VerticalAlignment="Top"/>
         <Label Visibility="{Binding IsLezioniEmpty, Converter={local:BoolToVisibilityConverter}}" Content="Nessuna lezione disponibile" HorizontalAlignment="Left" Margin="407,385,0,0" VerticalAlignment="Top"/>
         <TextBlock IsEnabled="{Binding IsIscrittoSelected}" Text="{Binding LezioniRimaste}" HorizontalAlignment="Left" Margin="161,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>

@@ -11,7 +11,7 @@
 
 -- Database Section
 -- ________________ 
-
+create database SkateSchool;
 use SkateSchool;
 
 

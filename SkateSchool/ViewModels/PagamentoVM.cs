@@ -27,7 +27,7 @@ namespace SkateSchool.ViewModels
 
         public bool IsIscrittoSelected => IscrittoSelected != null;
         public bool CanAddIscritto => NomeIscritto != null && CognomeIscritto != null && EtaIscritto != null && TelefonoIscritto != null;
-        public bool CanPagare => IscrittoSelected != null && TariffarioSelected != null && IsEtaValid;
+        public bool CanPagare => IscrittoSelected != null && TariffarioSelected != null;
 
         public void AddIscritto()
         {

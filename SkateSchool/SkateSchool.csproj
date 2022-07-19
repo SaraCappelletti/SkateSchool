@@ -18,6 +18,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -108,6 +123,11 @@
     </Compile>
     <Compile Include="Pagamento.cs">
       <DependentUpon>SkateSchoolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkateSchoolDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkateSchoolDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseVM.cs" />
     <Compile Include="Views\Converters.cs" />
@@ -230,6 +250,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SkateSchoolModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="SkateSchoolDataSet.xsc">
+      <DependentUpon>SkateSchoolDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SkateSchoolDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SkateSchoolDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SkateSchoolDataSet.xss">
+      <DependentUpon>SkateSchoolDataSet.xsd</DependentUpon>
+    </None>
     <None Include="SkateSchoolModel.edmx.diagram">
       <DependentUpon>SkateSchoolModel.edmx</DependentUpon>
     </None>
@@ -238,6 +269,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SkateSchool.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SkateSchoolModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SkateSchoolModel.Context.cs</LastGenOutput>
@@ -248,9 +282,32 @@
       <DependentUpon>SkateSchoolModel.edmx</DependentUpon>
       <LastGenOutput>SkateSchoolModel.cs</LastGenOutput>
     </Content>
+    <Content Include="SkateSchool_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>SkateSchool.mdf</DependentUpon>
+    </Content>
+    <Content Include="Views\SkateSchool.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\SkateSchool_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>SkateSchool.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
