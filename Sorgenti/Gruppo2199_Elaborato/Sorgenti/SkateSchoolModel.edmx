@@ -1,0 +1,1291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SkateSchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Attrezzatura">
+          <Key>
+            <PropertyRef Name="CodiceAttrezzatura" />
+          </Key>
+          <Property Name="CodiceAttrezzatura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodiceSede" Type="int" Nullable="false" />
+          <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CentroEstivo">
+          <Key>
+            <PropertyRef Name="CodiceCentroEstivo" />
+          </Key>
+          <Property Name="CodiceCentroEstivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataInizio" Type="date" Nullable="false" />
+          <Property Name="DataFine" Type="date" Nullable="false" />
+          <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Corso">
+          <Key>
+            <PropertyRef Name="CodiceCorso" />
+          </Key>
+          <Property Name="CodiceCorso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Livello" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CodiceSede" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gara">
+          <Key>
+            <PropertyRef Name="CodiceGara" />
+          </Key>
+          <Property Name="CodiceGara" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Citta" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Insegnamento">
+          <Key>
+            <PropertyRef Name="CodiceIstruttore" />
+            <PropertyRef Name="CodiceSede" />
+          </Key>
+          <Property Name="CodiceIstruttore" Type="int" Nullable="false" />
+          <Property Name="CodiceSede" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Iscritto">
+          <Key>
+            <PropertyRef Name="CodiceIscritto" />
+          </Key>
+          <Property Name="CodiceIscritto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cognome" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Eta" Type="int" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Livello" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Iscrizione">
+          <Key>
+            <PropertyRef Name="CodiceIscritto" />
+            <PropertyRef Name="CodiceLezione" />
+          </Key>
+          <Property Name="CodiceIscritto" Type="int" Nullable="false" />
+          <Property Name="CodiceLezione" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IscrizioneCentroEstivo">
+          <Key>
+            <PropertyRef Name="CodiceCentroEstivo" />
+            <PropertyRef Name="CodiceIscritto" />
+          </Key>
+          <Property Name="CodiceCentroEstivo" Type="int" Nullable="false" />
+          <Property Name="CodiceIscritto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IscrizioneGara">
+          <Key>
+            <PropertyRef Name="CodiceGara" />
+            <PropertyRef Name="CodiceIscritto" />
+          </Key>
+          <Property Name="CodiceGara" Type="int" Nullable="false" />
+          <Property Name="CodiceIscritto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Istruttore">
+          <Key>
+            <PropertyRef Name="CodiceIstruttore" />
+          </Key>
+          <Property Name="CodiceIstruttore" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cognome" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Eta" Type="int" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lezione">
+          <Key>
+            <PropertyRef Name="CodiceLezione" />
+          </Key>
+          <Property Name="CodiceLezione" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodiceIstruttore" Type="int" Nullable="false" />
+          <Property Name="CodiceCorso" Type="int" Nullable="false" />
+          <Property Name="MassimoPartecipanti" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Durata" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LezionePrivata">
+          <Key>
+            <PropertyRef Name="CodiceIstruttore" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="CodiceIstruttore" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Durata" Type="int" Nullable="false" />
+          <Property Name="CodiceSede" Type="int" Nullable="false" />
+          <Property Name="CodiceIscritto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Oggetto">
+          <Key>
+            <PropertyRef Name="CodiceOggetto" />
+          </Key>
+          <Property Name="CodiceOggetto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quantita" Type="int" Nullable="false" />
+          <Property Name="Prezzo" Type="real" Nullable="false" />
+          <Property Name="Descrizione" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CodiceSede" Type="int" Nullable="false" />
+          <Property Name="CodiceTipo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pagamento">
+          <Key>
+            <PropertyRef Name="CodicePagamento" />
+          </Key>
+          <Property Name="CodicePagamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroLezioniRimaste" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CodiceIscritto" Type="int" Nullable="false" />
+          <Property Name="CodiceTariffario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prestito">
+          <Key>
+            <PropertyRef Name="CodiceIscritto" />
+            <PropertyRef Name="CodiceAttrezzatura" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="CodiceIscritto" Type="int" Nullable="false" />
+          <Property Name="CodiceAttrezzatura" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Restituito" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="CodiceSede" />
+          </Key>
+          <Property Name="CodiceSede" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Citta" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="SkatePark" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tariffario">
+          <Key>
+            <PropertyRef Name="CodiceTariffario" />
+          </Key>
+          <Property Name="CodiceTariffario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroLezioni" Type="int" Nullable="false" />
+          <Property Name="Prezzo" Type="real" Nullable="false" />
+          <Property Name="Privata" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipologiaOggetto">
+          <Key>
+            <PropertyRef Name="CodiceTipo" />
+          </Key>
+          <Property Name="CodiceTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TutoraggioCentroEstivo">
+          <Key>
+            <PropertyRef Name="CodiceIstruttore" />
+            <PropertyRef Name="CodiceCentroEstivo" />
+          </Key>
+          <Property Name="CodiceIstruttore" Type="int" Nullable="false" />
+          <Property Name="CodiceCentroEstivo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendita">
+          <Key>
+            <PropertyRef Name="CodiceVendita" />
+          </Key>
+          <Property Name="CodiceVendita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodiceOggetto" Type="int" Nullable="false" />
+          <Property Name="Quantita" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FKappartenenza_FK">
+          <End Role="TipologiaOggetto" Type="Self.TipologiaOggetto" Multiplicity="1" />
+          <End Role="Oggetto" Type="Self.Oggetto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipologiaOggetto">
+              <PropertyRef Name="CodiceTipo" />
+            </Principal>
+            <Dependent Role="Oggetto">
+              <PropertyRef Name="CodiceTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKappartiene_FK">
+          <End Role="Corso" Type="Self.Corso" Multiplicity="1" />
+          <End Role="Lezione" Type="Self.Lezione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Corso">
+              <PropertyRef Name="CodiceCorso" />
+            </Principal>
+            <Dependent Role="Lezione">
+              <PropertyRef Name="CodiceCorso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKatt_CEN_FK">
+          <End Role="CentroEstivo" Type="Self.CentroEstivo" Multiplicity="1" />
+          <End Role="IscrizioneCentroEstivo" Type="Self.IscrizioneCentroEstivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CentroEstivo">
+              <PropertyRef Name="CodiceCentroEstivo" />
+            </Principal>
+            <Dependent Role="IscrizioneCentroEstivo">
+              <PropertyRef Name="CodiceCentroEstivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKatt_ISC">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="1" />
+          <End Role="IscrizioneCentroEstivo" Type="Self.IscrizioneCentroEstivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iscritto">
+              <PropertyRef Name="CodiceIscritto" />
+            </Principal>
+            <Dependent Role="IscrizioneCentroEstivo">
+              <PropertyRef Name="CodiceIscritto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKcomprende_FK">
+          <End Role="Tariffario" Type="Self.Tariffario" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tariffario">
+              <PropertyRef Name="CodiceTariffario" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="CodiceTariffario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKeffettuato_FK">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iscritto">
+              <PropertyRef Name="CodiceIscritto" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="CodiceIscritto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKgestione">
+          <End Role="Istruttore" Type="Self.Istruttore" Multiplicity="1" />
+          <End Role="Lezione" Type="Self.Lezione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istruttore">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Principal>
+            <Dependent Role="Lezione">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKins_IST_FK">
+          <End Role="Istruttore" Type="Self.Istruttore" Multiplicity="1" />
+          <End Role="Insegnamento" Type="Self.Insegnamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istruttore">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Principal>
+            <Dependent Role="Insegnamento">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKins_SED">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Insegnamento" Type="Self.Insegnamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="CodiceSede" />
+            </Principal>
+            <Dependent Role="Insegnamento">
+              <PropertyRef Name="CodiceSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKisc_GAR_FK">
+          <End Role="Gara" Type="Self.Gara" Multiplicity="1" />
+          <End Role="IscrizioneGara" Type="Self.IscrizioneGara" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gara">
+              <PropertyRef Name="CodiceGara" />
+            </Principal>
+            <Dependent Role="IscrizioneGara">
+              <PropertyRef Name="CodiceGara" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKisc_ISC">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="1" />
+          <End Role="IscrizioneGara" Type="Self.IscrizioneGara" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iscritto">
+              <PropertyRef Name="CodiceIscritto" />
+            </Principal>
+            <Dependent Role="IscrizioneGara">
+              <PropertyRef Name="CodiceIscritto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKluogo_FK">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="LezionePrivata" Type="Self.LezionePrivata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="CodiceSede" />
+            </Principal>
+            <Dependent Role="LezionePrivata">
+              <PropertyRef Name="CodiceSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKospita_FK">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Corso" Type="Self.Corso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="CodiceSede" />
+            </Principal>
+            <Dependent Role="Corso">
+              <PropertyRef Name="CodiceSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKpar_ISC_FK">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="1" />
+          <End Role="Iscrizione" Type="Self.Iscrizione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iscritto">
+              <PropertyRef Name="CodiceIscritto" />
+            </Principal>
+            <Dependent Role="Iscrizione">
+              <PropertyRef Name="CodiceIscritto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKpar_LEZ">
+          <End Role="Lezione" Type="Self.Lezione" Multiplicity="1" />
+          <End Role="Iscrizione" Type="Self.Iscrizione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lezione">
+              <PropertyRef Name="CodiceLezione" />
+            </Principal>
+            <Dependent Role="Iscrizione">
+              <PropertyRef Name="CodiceLezione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKpossiede_FK">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Attrezzatura" Type="Self.Attrezzatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="CodiceSede" />
+            </Principal>
+            <Dependent Role="Attrezzatura">
+              <PropertyRef Name="CodiceSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKprende_FK">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="1" />
+          <End Role="Prestito" Type="Self.Prestito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iscritto">
+              <PropertyRef Name="CodiceIscritto" />
+            </Principal>
+            <Dependent Role="Prestito">
+              <PropertyRef Name="CodiceIscritto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKpresiede">
+          <End Role="Istruttore" Type="Self.Istruttore" Multiplicity="1" />
+          <End Role="LezionePrivata" Type="Self.LezionePrivata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istruttore">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Principal>
+            <Dependent Role="LezionePrivata">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKprestito">
+          <End Role="Attrezzatura" Type="Self.Attrezzatura" Multiplicity="1" />
+          <End Role="Prestito" Type="Self.Prestito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attrezzatura">
+              <PropertyRef Name="CodiceAttrezzatura" />
+            </Principal>
+            <Dependent Role="Prestito">
+              <PropertyRef Name="CodiceAttrezzatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKR">
+          <End Role="Oggetto" Type="Self.Oggetto" Multiplicity="1" />
+          <End Role="Vendita" Type="Self.Vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oggetto">
+              <PropertyRef Name="CodiceOggetto" />
+            </Principal>
+            <Dependent Role="Vendita">
+              <PropertyRef Name="CodiceOggetto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKsostiene_FK">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="1" />
+          <End Role="LezionePrivata" Type="Self.LezionePrivata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iscritto">
+              <PropertyRef Name="CodiceIscritto" />
+            </Principal>
+            <Dependent Role="LezionePrivata">
+              <PropertyRef Name="CodiceIscritto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKtut_CEN">
+          <End Role="CentroEstivo" Type="Self.CentroEstivo" Multiplicity="1" />
+          <End Role="TutoraggioCentroEstivo" Type="Self.TutoraggioCentroEstivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CentroEstivo">
+              <PropertyRef Name="CodiceCentroEstivo" />
+            </Principal>
+            <Dependent Role="TutoraggioCentroEstivo">
+              <PropertyRef Name="CodiceCentroEstivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKtut_IST_FK">
+          <End Role="Istruttore" Type="Self.Istruttore" Multiplicity="1" />
+          <End Role="TutoraggioCentroEstivo" Type="Self.TutoraggioCentroEstivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istruttore">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Principal>
+            <Dependent Role="TutoraggioCentroEstivo">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKvendita_FK">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Oggetto" Type="Self.Oggetto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="CodiceSede" />
+            </Principal>
+            <Dependent Role="Oggetto">
+              <PropertyRef Name="CodiceSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SkateSchoolModelStoreContainer">
+          <EntitySet Name="Attrezzatura" EntityType="Self.Attrezzatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CentroEstivo" EntityType="Self.CentroEstivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Corso" EntityType="Self.Corso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gara" EntityType="Self.Gara" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insegnamento" EntityType="Self.Insegnamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Iscritto" EntityType="Self.Iscritto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Iscrizione" EntityType="Self.Iscrizione" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IscrizioneCentroEstivo" EntityType="Self.IscrizioneCentroEstivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IscrizioneGara" EntityType="Self.IscrizioneGara" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Istruttore" EntityType="Self.Istruttore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lezione" EntityType="Self.Lezione" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LezionePrivata" EntityType="Self.LezionePrivata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oggetto" EntityType="Self.Oggetto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pagamento" EntityType="Self.Pagamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestito" EntityType="Self.Prestito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tariffario" EntityType="Self.Tariffario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipologiaOggetto" EntityType="Self.TipologiaOggetto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TutoraggioCentroEstivo" EntityType="Self.TutoraggioCentroEstivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendita" EntityType="Self.Vendita" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FKappartenenza_FK" Association="Self.FKappartenenza_FK">
+            <End Role="TipologiaOggetto" EntitySet="TipologiaOggetto" />
+            <End Role="Oggetto" EntitySet="Oggetto" />
+          </AssociationSet>
+          <AssociationSet Name="FKappartiene_FK" Association="Self.FKappartiene_FK">
+            <End Role="Corso" EntitySet="Corso" />
+            <End Role="Lezione" EntitySet="Lezione" />
+          </AssociationSet>
+          <AssociationSet Name="FKatt_CEN_FK" Association="Self.FKatt_CEN_FK">
+            <End Role="CentroEstivo" EntitySet="CentroEstivo" />
+            <End Role="IscrizioneCentroEstivo" EntitySet="IscrizioneCentroEstivo" />
+          </AssociationSet>
+          <AssociationSet Name="FKatt_ISC" Association="Self.FKatt_ISC">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="IscrizioneCentroEstivo" EntitySet="IscrizioneCentroEstivo" />
+          </AssociationSet>
+          <AssociationSet Name="FKcomprende_FK" Association="Self.FKcomprende_FK">
+            <End Role="Tariffario" EntitySet="Tariffario" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="FKeffettuato_FK" Association="Self.FKeffettuato_FK">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="FKgestione" Association="Self.FKgestione">
+            <End Role="Istruttore" EntitySet="Istruttore" />
+            <End Role="Lezione" EntitySet="Lezione" />
+          </AssociationSet>
+          <AssociationSet Name="FKins_IST_FK" Association="Self.FKins_IST_FK">
+            <End Role="Istruttore" EntitySet="Istruttore" />
+            <End Role="Insegnamento" EntitySet="Insegnamento" />
+          </AssociationSet>
+          <AssociationSet Name="FKins_SED" Association="Self.FKins_SED">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Insegnamento" EntitySet="Insegnamento" />
+          </AssociationSet>
+          <AssociationSet Name="FKisc_GAR_FK" Association="Self.FKisc_GAR_FK">
+            <End Role="Gara" EntitySet="Gara" />
+            <End Role="IscrizioneGara" EntitySet="IscrizioneGara" />
+          </AssociationSet>
+          <AssociationSet Name="FKisc_ISC" Association="Self.FKisc_ISC">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="IscrizioneGara" EntitySet="IscrizioneGara" />
+          </AssociationSet>
+          <AssociationSet Name="FKluogo_FK" Association="Self.FKluogo_FK">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="LezionePrivata" EntitySet="LezionePrivata" />
+          </AssociationSet>
+          <AssociationSet Name="FKospita_FK" Association="Self.FKospita_FK">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Corso" EntitySet="Corso" />
+          </AssociationSet>
+          <AssociationSet Name="FKpar_ISC_FK" Association="Self.FKpar_ISC_FK">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="Iscrizione" EntitySet="Iscrizione" />
+          </AssociationSet>
+          <AssociationSet Name="FKpar_LEZ" Association="Self.FKpar_LEZ">
+            <End Role="Lezione" EntitySet="Lezione" />
+            <End Role="Iscrizione" EntitySet="Iscrizione" />
+          </AssociationSet>
+          <AssociationSet Name="FKpossiede_FK" Association="Self.FKpossiede_FK">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Attrezzatura" EntitySet="Attrezzatura" />
+          </AssociationSet>
+          <AssociationSet Name="FKprende_FK" Association="Self.FKprende_FK">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="Prestito" EntitySet="Prestito" />
+          </AssociationSet>
+          <AssociationSet Name="FKpresiede" Association="Self.FKpresiede">
+            <End Role="Istruttore" EntitySet="Istruttore" />
+            <End Role="LezionePrivata" EntitySet="LezionePrivata" />
+          </AssociationSet>
+          <AssociationSet Name="FKprestito" Association="Self.FKprestito">
+            <End Role="Attrezzatura" EntitySet="Attrezzatura" />
+            <End Role="Prestito" EntitySet="Prestito" />
+          </AssociationSet>
+          <AssociationSet Name="FKR" Association="Self.FKR">
+            <End Role="Oggetto" EntitySet="Oggetto" />
+            <End Role="Vendita" EntitySet="Vendita" />
+          </AssociationSet>
+          <AssociationSet Name="FKsostiene_FK" Association="Self.FKsostiene_FK">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="LezionePrivata" EntitySet="LezionePrivata" />
+          </AssociationSet>
+          <AssociationSet Name="FKtut_CEN" Association="Self.FKtut_CEN">
+            <End Role="CentroEstivo" EntitySet="CentroEstivo" />
+            <End Role="TutoraggioCentroEstivo" EntitySet="TutoraggioCentroEstivo" />
+          </AssociationSet>
+          <AssociationSet Name="FKtut_IST_FK" Association="Self.FKtut_IST_FK">
+            <End Role="Istruttore" EntitySet="Istruttore" />
+            <End Role="TutoraggioCentroEstivo" EntitySet="TutoraggioCentroEstivo" />
+          </AssociationSet>
+          <AssociationSet Name="FKvendita_FK" Association="Self.FKvendita_FK">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Oggetto" EntitySet="Oggetto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SkateSchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Attrezzatura">
+          <Key>
+            <PropertyRef Name="CodiceAttrezzatura" />
+          </Key>
+          <Property Name="CodiceAttrezzatura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+          <Property Name="Descrizione" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Sede" Relationship="Self.FKpossiede_FK" FromRole="Attrezzatura" ToRole="Sede" />
+          <NavigationProperty Name="Prestito" Relationship="Self.FKprestito" FromRole="Attrezzatura" ToRole="Prestito" />
+        </EntityType>
+        <EntityType Name="CentroEstivo">
+          <Key>
+            <PropertyRef Name="CodiceCentroEstivo" />
+          </Key>
+          <Property Name="CodiceCentroEstivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataInizio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataFine" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Descrizione" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Iscritto" Relationship="Self.IscrizioneCentroEstivo" FromRole="CentroEstivo" ToRole="Iscritto" />
+          <NavigationProperty Name="Istruttore" Relationship="Self.TutoraggioCentroEstivo" FromRole="CentroEstivo" ToRole="Istruttore" />
+        </EntityType>
+        <EntityType Name="Corso">
+          <Key>
+            <PropertyRef Name="CodiceCorso" />
+          </Key>
+          <Property Name="CodiceCorso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descrizione" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Livello" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lezione" Relationship="Self.FKappartiene_FK" FromRole="Corso" ToRole="Lezione" />
+          <NavigationProperty Name="Sede" Relationship="Self.FKospita_FK" FromRole="Corso" ToRole="Sede" />
+        </EntityType>
+        <EntityType Name="Gara">
+          <Key>
+            <PropertyRef Name="CodiceGara" />
+          </Key>
+          <Property Name="CodiceGara" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Citta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descrizione" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Iscritto" Relationship="Self.IscrizioneGara" FromRole="Gara" ToRole="Iscritto" />
+        </EntityType>
+        <EntityType Name="Iscritto">
+          <Key>
+            <PropertyRef Name="CodiceIscritto" />
+          </Key>
+          <Property Name="CodiceIscritto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cognome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Eta" Type="Int32" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Livello" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pagamento" Relationship="Self.FKeffettuato_FK" FromRole="Iscritto" ToRole="Pagamento" />
+          <NavigationProperty Name="Prestito" Relationship="Self.FKprende_FK" FromRole="Iscritto" ToRole="Prestito" />
+          <NavigationProperty Name="LezionePrivata" Relationship="Self.FKsostiene_FK" FromRole="Iscritto" ToRole="LezionePrivata" />
+          <NavigationProperty Name="Lezione" Relationship="Self.Iscrizione" FromRole="Iscritto" ToRole="Lezione" />
+          <NavigationProperty Name="CentroEstivo" Relationship="Self.IscrizioneCentroEstivo" FromRole="Iscritto" ToRole="CentroEstivo" />
+          <NavigationProperty Name="Gara" Relationship="Self.IscrizioneGara" FromRole="Iscritto" ToRole="Gara" />
+        </EntityType>
+        <EntityType Name="Istruttore">
+          <Key>
+            <PropertyRef Name="CodiceIstruttore" />
+          </Key>
+          <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cognome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Eta" Type="Int32" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Lezione" Relationship="Self.FKgestione" FromRole="Istruttore" ToRole="Lezione" />
+          <NavigationProperty Name="LezionePrivata" Relationship="Self.FKpresiede" FromRole="Istruttore" ToRole="LezionePrivata" />
+          <NavigationProperty Name="Sede" Relationship="Self.Insegnamento" FromRole="Istruttore" ToRole="Sede" />
+          <NavigationProperty Name="CentroEstivo" Relationship="Self.TutoraggioCentroEstivo" FromRole="Istruttore" ToRole="CentroEstivo" />
+        </EntityType>
+        <EntityType Name="Lezione">
+          <Key>
+            <PropertyRef Name="CodiceLezione" />
+          </Key>
+          <Property Name="CodiceLezione" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" />
+          <Property Name="CodiceCorso" Type="Int32" Nullable="false" />
+          <Property Name="MassimoPartecipanti" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Durata" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Corso" Relationship="Self.FKappartiene_FK" FromRole="Lezione" ToRole="Corso" />
+          <NavigationProperty Name="Istruttore" Relationship="Self.FKgestione" FromRole="Lezione" ToRole="Istruttore" />
+          <NavigationProperty Name="Iscritto" Relationship="Self.Iscrizione" FromRole="Lezione" ToRole="Iscritto" />
+        </EntityType>
+        <EntityType Name="LezionePrivata">
+          <Key>
+            <PropertyRef Name="CodiceIstruttore" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="CodiceIstruttore" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Durata" Type="Int32" Nullable="false" />
+          <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+          <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Iscritto" Relationship="Self.FKsostiene_FK" FromRole="LezionePrivata" ToRole="Iscritto" />
+          <NavigationProperty Name="Istruttore" Relationship="Self.FKpresiede" FromRole="LezionePrivata" ToRole="Istruttore" />
+          <NavigationProperty Name="Sede" Relationship="Self.FKluogo_FK" FromRole="LezionePrivata" ToRole="Sede" />
+        </EntityType>
+        <EntityType Name="Oggetto">
+          <Key>
+            <PropertyRef Name="CodiceOggetto" />
+          </Key>
+          <Property Name="CodiceOggetto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantita" Type="Int32" Nullable="false" />
+          <Property Name="Prezzo" Type="Single" Nullable="false" />
+          <Property Name="Descrizione" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodiceSede" Type="Int32" Nullable="false" />
+          <Property Name="CodiceTipo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipologiaOggetto" Relationship="Self.FKappartenenza_FK" FromRole="Oggetto" ToRole="TipologiaOggetto" />
+          <NavigationProperty Name="Vendita" Relationship="Self.FKR" FromRole="Oggetto" ToRole="Vendita" />
+          <NavigationProperty Name="Sede" Relationship="Self.FKvendita_FK" FromRole="Oggetto" ToRole="Sede" />
+        </EntityType>
+        <EntityType Name="Pagamento">
+          <Key>
+            <PropertyRef Name="CodicePagamento" />
+          </Key>
+          <Property Name="CodicePagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroLezioniRimaste" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
+          <Property Name="CodiceTariffario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Iscritto" Relationship="Self.FKeffettuato_FK" FromRole="Pagamento" ToRole="Iscritto" />
+          <NavigationProperty Name="Tariffario" Relationship="Self.FKcomprende_FK" FromRole="Pagamento" ToRole="Tariffario" />
+        </EntityType>
+        <EntityType Name="Prestito">
+          <Key>
+            <PropertyRef Name="CodiceIscritto" />
+            <PropertyRef Name="CodiceAttrezzatura" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="CodiceIscritto" Type="Int32" Nullable="false" />
+          <Property Name="CodiceAttrezzatura" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Restituito" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Attrezzatura" Relationship="Self.FKprestito" FromRole="Prestito" ToRole="Attrezzatura" />
+          <NavigationProperty Name="Iscritto" Relationship="Self.FKprende_FK" FromRole="Prestito" ToRole="Iscritto" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="CodiceSede" />
+          </Key>
+          <Property Name="CodiceSede" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Citta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SkatePark" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Attrezzatura" Relationship="Self.FKpossiede_FK" FromRole="Sede" ToRole="Attrezzatura" />
+          <NavigationProperty Name="Corso" Relationship="Self.FKospita_FK" FromRole="Sede" ToRole="Corso" />
+          <NavigationProperty Name="LezionePrivata" Relationship="Self.FKluogo_FK" FromRole="Sede" ToRole="LezionePrivata" />
+          <NavigationProperty Name="Oggetto" Relationship="Self.FKvendita_FK" FromRole="Sede" ToRole="Oggetto" />
+          <NavigationProperty Name="Istruttore" Relationship="Self.Insegnamento" FromRole="Sede" ToRole="Istruttore" />
+        </EntityType>
+        <EntityType Name="Tariffario">
+          <Key>
+            <PropertyRef Name="CodiceTariffario" />
+          </Key>
+          <Property Name="CodiceTariffario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroLezioni" Type="Int32" Nullable="false" />
+          <Property Name="Prezzo" Type="Single" Nullable="false" />
+          <Property Name="Privata" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Pagamento" Relationship="Self.FKcomprende_FK" FromRole="Tariffario" ToRole="Pagamento" />
+        </EntityType>
+        <EntityType Name="TipologiaOggetto">
+          <Key>
+            <PropertyRef Name="CodiceTipo" />
+          </Key>
+          <Property Name="CodiceTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Oggetto" Relationship="Self.FKappartenenza_FK" FromRole="TipologiaOggetto" ToRole="Oggetto" />
+        </EntityType>
+        <EntityType Name="Vendita">
+          <Key>
+            <PropertyRef Name="CodiceVendita" />
+          </Key>
+          <Property Name="CodiceVendita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodiceOggetto" Type="Int32" Nullable="false" />
+          <Property Name="Quantita" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Oggetto" Relationship="Self.FKR" FromRole="Vendita" ToRole="Oggetto" />
+        </EntityType>
+        <Association Name="FKpossiede_FK">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Attrezzatura" Type="Self.Attrezzatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="CodiceSede" />
+            </Principal>
+            <Dependent Role="Attrezzatura">
+              <PropertyRef Name="CodiceSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKprestito">
+          <End Role="Attrezzatura" Type="Self.Attrezzatura" Multiplicity="1" />
+          <End Role="Prestito" Type="Self.Prestito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attrezzatura">
+              <PropertyRef Name="CodiceAttrezzatura" />
+            </Principal>
+            <Dependent Role="Prestito">
+              <PropertyRef Name="CodiceAttrezzatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKappartiene_FK">
+          <End Role="Corso" Type="Self.Corso" Multiplicity="1" />
+          <End Role="Lezione" Type="Self.Lezione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Corso">
+              <PropertyRef Name="CodiceCorso" />
+            </Principal>
+            <Dependent Role="Lezione">
+              <PropertyRef Name="CodiceCorso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKospita_FK">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Corso" Type="Self.Corso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="CodiceSede" />
+            </Principal>
+            <Dependent Role="Corso">
+              <PropertyRef Name="CodiceSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKeffettuato_FK">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iscritto">
+              <PropertyRef Name="CodiceIscritto" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="CodiceIscritto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKprende_FK">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="1" />
+          <End Role="Prestito" Type="Self.Prestito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iscritto">
+              <PropertyRef Name="CodiceIscritto" />
+            </Principal>
+            <Dependent Role="Prestito">
+              <PropertyRef Name="CodiceIscritto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKsostiene_FK">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="1" />
+          <End Role="LezionePrivata" Type="Self.LezionePrivata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iscritto">
+              <PropertyRef Name="CodiceIscritto" />
+            </Principal>
+            <Dependent Role="LezionePrivata">
+              <PropertyRef Name="CodiceIscritto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKgestione">
+          <End Role="Istruttore" Type="Self.Istruttore" Multiplicity="1" />
+          <End Role="Lezione" Type="Self.Lezione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istruttore">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Principal>
+            <Dependent Role="Lezione">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKpresiede">
+          <End Role="Istruttore" Type="Self.Istruttore" Multiplicity="1" />
+          <End Role="LezionePrivata" Type="Self.LezionePrivata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istruttore">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Principal>
+            <Dependent Role="LezionePrivata">
+              <PropertyRef Name="CodiceIstruttore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKluogo_FK">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="LezionePrivata" Type="Self.LezionePrivata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="CodiceSede" />
+            </Principal>
+            <Dependent Role="LezionePrivata">
+              <PropertyRef Name="CodiceSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKappartenenza_FK">
+          <End Role="TipologiaOggetto" Type="Self.TipologiaOggetto" Multiplicity="1" />
+          <End Role="Oggetto" Type="Self.Oggetto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipologiaOggetto">
+              <PropertyRef Name="CodiceTipo" />
+            </Principal>
+            <Dependent Role="Oggetto">
+              <PropertyRef Name="CodiceTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKR">
+          <End Role="Oggetto" Type="Self.Oggetto" Multiplicity="1" />
+          <End Role="Vendita" Type="Self.Vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oggetto">
+              <PropertyRef Name="CodiceOggetto" />
+            </Principal>
+            <Dependent Role="Vendita">
+              <PropertyRef Name="CodiceOggetto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKvendita_FK">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Oggetto" Type="Self.Oggetto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="CodiceSede" />
+            </Principal>
+            <Dependent Role="Oggetto">
+              <PropertyRef Name="CodiceSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKcomprende_FK">
+          <End Role="Tariffario" Type="Self.Tariffario" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tariffario">
+              <PropertyRef Name="CodiceTariffario" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="CodiceTariffario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Insegnamento">
+          <End Role="Istruttore" Type="Self.Istruttore" Multiplicity="*" />
+          <End Role="Sede" Type="Self.Sede" Multiplicity="*" />
+        </Association>
+        <Association Name="Iscrizione">
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="*" />
+          <End Role="Lezione" Type="Self.Lezione" Multiplicity="*" />
+        </Association>
+        <Association Name="IscrizioneCentroEstivo">
+          <End Role="CentroEstivo" Type="Self.CentroEstivo" Multiplicity="*" />
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="*" />
+        </Association>
+        <Association Name="IscrizioneGara">
+          <End Role="Gara" Type="Self.Gara" Multiplicity="*" />
+          <End Role="Iscritto" Type="Self.Iscritto" Multiplicity="*" />
+        </Association>
+        <Association Name="TutoraggioCentroEstivo">
+          <End Role="CentroEstivo" Type="Self.CentroEstivo" Multiplicity="*" />
+          <End Role="Istruttore" Type="Self.Istruttore" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SkateSchoolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attrezzatura" EntityType="Self.Attrezzatura" />
+          <EntitySet Name="CentroEstivo" EntityType="Self.CentroEstivo" />
+          <EntitySet Name="Corso" EntityType="Self.Corso" />
+          <EntitySet Name="Gara" EntityType="Self.Gara" />
+          <EntitySet Name="Iscritto" EntityType="Self.Iscritto" />
+          <EntitySet Name="Istruttore" EntityType="Self.Istruttore" />
+          <EntitySet Name="Lezione" EntityType="Self.Lezione" />
+          <EntitySet Name="LezionePrivata" EntityType="Self.LezionePrivata" />
+          <EntitySet Name="Oggetto" EntityType="Self.Oggetto" />
+          <EntitySet Name="Pagamento" EntityType="Self.Pagamento" />
+          <EntitySet Name="Prestito" EntityType="Self.Prestito" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" />
+          <EntitySet Name="Tariffario" EntityType="Self.Tariffario" />
+          <EntitySet Name="TipologiaOggetto" EntityType="Self.TipologiaOggetto" />
+          <EntitySet Name="Vendita" EntityType="Self.Vendita" />
+          <AssociationSet Name="FKpossiede_FK" Association="Self.FKpossiede_FK">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Attrezzatura" EntitySet="Attrezzatura" />
+          </AssociationSet>
+          <AssociationSet Name="FKprestito" Association="Self.FKprestito">
+            <End Role="Attrezzatura" EntitySet="Attrezzatura" />
+            <End Role="Prestito" EntitySet="Prestito" />
+          </AssociationSet>
+          <AssociationSet Name="FKappartiene_FK" Association="Self.FKappartiene_FK">
+            <End Role="Corso" EntitySet="Corso" />
+            <End Role="Lezione" EntitySet="Lezione" />
+          </AssociationSet>
+          <AssociationSet Name="FKospita_FK" Association="Self.FKospita_FK">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Corso" EntitySet="Corso" />
+          </AssociationSet>
+          <AssociationSet Name="FKeffettuato_FK" Association="Self.FKeffettuato_FK">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="FKprende_FK" Association="Self.FKprende_FK">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="Prestito" EntitySet="Prestito" />
+          </AssociationSet>
+          <AssociationSet Name="FKsostiene_FK" Association="Self.FKsostiene_FK">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="LezionePrivata" EntitySet="LezionePrivata" />
+          </AssociationSet>
+          <AssociationSet Name="FKgestione" Association="Self.FKgestione">
+            <End Role="Istruttore" EntitySet="Istruttore" />
+            <End Role="Lezione" EntitySet="Lezione" />
+          </AssociationSet>
+          <AssociationSet Name="FKpresiede" Association="Self.FKpresiede">
+            <End Role="Istruttore" EntitySet="Istruttore" />
+            <End Role="LezionePrivata" EntitySet="LezionePrivata" />
+          </AssociationSet>
+          <AssociationSet Name="FKluogo_FK" Association="Self.FKluogo_FK">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="LezionePrivata" EntitySet="LezionePrivata" />
+          </AssociationSet>
+          <AssociationSet Name="FKappartenenza_FK" Association="Self.FKappartenenza_FK">
+            <End Role="TipologiaOggetto" EntitySet="TipologiaOggetto" />
+            <End Role="Oggetto" EntitySet="Oggetto" />
+          </AssociationSet>
+          <AssociationSet Name="FKR" Association="Self.FKR">
+            <End Role="Oggetto" EntitySet="Oggetto" />
+            <End Role="Vendita" EntitySet="Vendita" />
+          </AssociationSet>
+          <AssociationSet Name="FKvendita_FK" Association="Self.FKvendita_FK">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Oggetto" EntitySet="Oggetto" />
+          </AssociationSet>
+          <AssociationSet Name="FKcomprende_FK" Association="Self.FKcomprende_FK">
+            <End Role="Tariffario" EntitySet="Tariffario" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="Insegnamento" Association="Self.Insegnamento">
+            <End Role="Istruttore" EntitySet="Istruttore" />
+            <End Role="Sede" EntitySet="Sede" />
+          </AssociationSet>
+          <AssociationSet Name="Iscrizione" Association="Self.Iscrizione">
+            <End Role="Iscritto" EntitySet="Iscritto" />
+            <End Role="Lezione" EntitySet="Lezione" />
+          </AssociationSet>
+          <AssociationSet Name="IscrizioneCentroEstivo" Association="Self.IscrizioneCentroEstivo">
+            <End Role="CentroEstivo" EntitySet="CentroEstivo" />
+            <End Role="Iscritto" EntitySet="Iscritto" />
+          </AssociationSet>
+          <AssociationSet Name="IscrizioneGara" Association="Self.IscrizioneGara">
+            <End Role="Gara" EntitySet="Gara" />
+            <End Role="Iscritto" EntitySet="Iscritto" />
+          </AssociationSet>
+          <AssociationSet Name="TutoraggioCentroEstivo" Association="Self.TutoraggioCentroEstivo">
+            <End Role="CentroEstivo" EntitySet="CentroEstivo" />
+            <End Role="Istruttore" EntitySet="Istruttore" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SkateSchoolModelStoreContainer" CdmEntityContainer="SkateSchoolEntities">
+          <EntitySetMapping Name="Attrezzatura">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Attrezzatura">
+              <MappingFragment StoreEntitySet="Attrezzatura">
+                <ScalarProperty Name="CodiceAttrezzatura" ColumnName="CodiceAttrezzatura" />
+                <ScalarProperty Name="CodiceSede" ColumnName="CodiceSede" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CentroEstivo">
+            <EntityTypeMapping TypeName="SkateSchoolModel.CentroEstivo">
+              <MappingFragment StoreEntitySet="CentroEstivo">
+                <ScalarProperty Name="CodiceCentroEstivo" ColumnName="CodiceCentroEstivo" />
+                <ScalarProperty Name="DataInizio" ColumnName="DataInizio" />
+                <ScalarProperty Name="DataFine" ColumnName="DataFine" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Corso">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Corso">
+              <MappingFragment StoreEntitySet="Corso">
+                <ScalarProperty Name="CodiceCorso" ColumnName="CodiceCorso" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+                <ScalarProperty Name="Livello" ColumnName="Livello" />
+                <ScalarProperty Name="CodiceSede" ColumnName="CodiceSede" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gara">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Gara">
+              <MappingFragment StoreEntitySet="Gara">
+                <ScalarProperty Name="CodiceGara" ColumnName="CodiceGara" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Citta" ColumnName="Citta" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Iscritto">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Iscritto">
+              <MappingFragment StoreEntitySet="Iscritto">
+                <ScalarProperty Name="CodiceIscritto" ColumnName="CodiceIscritto" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+                <ScalarProperty Name="Eta" ColumnName="Eta" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Livello" ColumnName="Livello" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Istruttore">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Istruttore">
+              <MappingFragment StoreEntitySet="Istruttore">
+                <ScalarProperty Name="CodiceIstruttore" ColumnName="CodiceIstruttore" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+                <ScalarProperty Name="Eta" ColumnName="Eta" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lezione">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Lezione">
+              <MappingFragment StoreEntitySet="Lezione">
+                <ScalarProperty Name="CodiceLezione" ColumnName="CodiceLezione" />
+                <ScalarProperty Name="CodiceIstruttore" ColumnName="CodiceIstruttore" />
+                <ScalarProperty Name="CodiceCorso" ColumnName="CodiceCorso" />
+                <ScalarProperty Name="MassimoPartecipanti" ColumnName="MassimoPartecipanti" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Durata" ColumnName="Durata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LezionePrivata">
+            <EntityTypeMapping TypeName="SkateSchoolModel.LezionePrivata">
+              <MappingFragment StoreEntitySet="LezionePrivata">
+                <ScalarProperty Name="CodiceIstruttore" ColumnName="CodiceIstruttore" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Durata" ColumnName="Durata" />
+                <ScalarProperty Name="CodiceSede" ColumnName="CodiceSede" />
+                <ScalarProperty Name="CodiceIscritto" ColumnName="CodiceIscritto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oggetto">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Oggetto">
+              <MappingFragment StoreEntitySet="Oggetto">
+                <ScalarProperty Name="CodiceOggetto" ColumnName="CodiceOggetto" />
+                <ScalarProperty Name="Quantita" ColumnName="Quantita" />
+                <ScalarProperty Name="Prezzo" ColumnName="Prezzo" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+                <ScalarProperty Name="CodiceSede" ColumnName="CodiceSede" />
+                <ScalarProperty Name="CodiceTipo" ColumnName="CodiceTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagamento">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Pagamento">
+              <MappingFragment StoreEntitySet="Pagamento">
+                <ScalarProperty Name="CodicePagamento" ColumnName="CodicePagamento" />
+                <ScalarProperty Name="NumeroLezioniRimaste" ColumnName="NumeroLezioniRimaste" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="CodiceIscritto" ColumnName="CodiceIscritto" />
+                <ScalarProperty Name="CodiceTariffario" ColumnName="CodiceTariffario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestito">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Prestito">
+              <MappingFragment StoreEntitySet="Prestito">
+                <ScalarProperty Name="CodiceIscritto" ColumnName="CodiceIscritto" />
+                <ScalarProperty Name="CodiceAttrezzatura" ColumnName="CodiceAttrezzatura" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Restituito" ColumnName="Restituito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sede">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Sede">
+              <MappingFragment StoreEntitySet="Sede">
+                <ScalarProperty Name="CodiceSede" ColumnName="CodiceSede" />
+                <ScalarProperty Name="Citta" ColumnName="Citta" />
+                <ScalarProperty Name="SkatePark" ColumnName="SkatePark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tariffario">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Tariffario">
+              <MappingFragment StoreEntitySet="Tariffario">
+                <ScalarProperty Name="CodiceTariffario" ColumnName="CodiceTariffario" />
+                <ScalarProperty Name="NumeroLezioni" ColumnName="NumeroLezioni" />
+                <ScalarProperty Name="Prezzo" ColumnName="Prezzo" />
+                <ScalarProperty Name="Privata" ColumnName="Privata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipologiaOggetto">
+            <EntityTypeMapping TypeName="SkateSchoolModel.TipologiaOggetto">
+              <MappingFragment StoreEntitySet="TipologiaOggetto">
+                <ScalarProperty Name="CodiceTipo" ColumnName="CodiceTipo" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendita">
+            <EntityTypeMapping TypeName="SkateSchoolModel.Vendita">
+              <MappingFragment StoreEntitySet="Vendita">
+                <ScalarProperty Name="CodiceVendita" ColumnName="CodiceVendita" />
+                <ScalarProperty Name="CodiceOggetto" ColumnName="CodiceOggetto" />
+                <ScalarProperty Name="Quantita" ColumnName="Quantita" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Insegnamento" TypeName="SkateSchoolModel.Insegnamento" StoreEntitySet="Insegnamento">
+            <EndProperty Name="Istruttore">
+              <ScalarProperty Name="CodiceIstruttore" ColumnName="CodiceIstruttore" />
+            </EndProperty>
+            <EndProperty Name="Sede">
+              <ScalarProperty Name="CodiceSede" ColumnName="CodiceSede" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Iscrizione" TypeName="SkateSchoolModel.Iscrizione" StoreEntitySet="Iscrizione">
+            <EndProperty Name="Iscritto">
+              <ScalarProperty Name="CodiceIscritto" ColumnName="CodiceIscritto" />
+            </EndProperty>
+            <EndProperty Name="Lezione">
+              <ScalarProperty Name="CodiceLezione" ColumnName="CodiceLezione" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="IscrizioneCentroEstivo" TypeName="SkateSchoolModel.IscrizioneCentroEstivo" StoreEntitySet="IscrizioneCentroEstivo">
+            <EndProperty Name="CentroEstivo">
+              <ScalarProperty Name="CodiceCentroEstivo" ColumnName="CodiceCentroEstivo" />
+            </EndProperty>
+            <EndProperty Name="Iscritto">
+              <ScalarProperty Name="CodiceIscritto" ColumnName="CodiceIscritto" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="IscrizioneGara" TypeName="SkateSchoolModel.IscrizioneGara" StoreEntitySet="IscrizioneGara">
+            <EndProperty Name="Gara">
+              <ScalarProperty Name="CodiceGara" ColumnName="CodiceGara" />
+            </EndProperty>
+            <EndProperty Name="Iscritto">
+              <ScalarProperty Name="CodiceIscritto" ColumnName="CodiceIscritto" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TutoraggioCentroEstivo" TypeName="SkateSchoolModel.TutoraggioCentroEstivo" StoreEntitySet="TutoraggioCentroEstivo">
+            <EndProperty Name="CentroEstivo">
+              <ScalarProperty Name="CodiceCentroEstivo" ColumnName="CodiceCentroEstivo" />
+            </EndProperty>
+            <EndProperty Name="Istruttore">
+              <ScalarProperty Name="CodiceIstruttore" ColumnName="CodiceIstruttore" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,5 @@
+INSERT INTO [dbo].[IscrizioneCentroEstivo] ([CodiceCentroEstivo], [CodiceIscritto]) VALUES (1, 5)
+INSERT INTO [dbo].[IscrizioneCentroEstivo] ([CodiceCentroEstivo], [CodiceIscritto]) VALUES (1, 2)
+INSERT INTO [dbo].[IscrizioneCentroEstivo] ([CodiceCentroEstivo], [CodiceIscritto]) VALUES (2, 4)
+INSERT INTO [dbo].[IscrizioneCentroEstivo] ([CodiceCentroEstivo], [CodiceIscritto]) VALUES (2, 2)
+INSERT INTO [dbo].[IscrizioneCentroEstivo] ([CodiceCentroEstivo], [CodiceIscritto]) VALUES (2, 5)

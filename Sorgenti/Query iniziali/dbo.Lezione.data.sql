@@ -1,0 +1,5 @@
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data]) VALUES (1, 1, 1, 6, N'2022-06-13')
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data]) VALUES (2, 1, 2, 6, N'2022-06-13')
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data]) VALUES (3, 2, 3, 6, N'2022-06-14')
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data]) VALUES (4, 4, 4, 6, N'2022-06-15')
+INSERT INTO [dbo].[Lezione] ([CodiceLezione], [CodiceIstruttore], [CodiceCorso], [MassimoPartecipanti], [Data]) VALUES (5, 2, 5, 6, N'2022-06-13')
